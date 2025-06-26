@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: ProductCatalog.Exceptions
+  commentId: N:ProductCatalog.Exceptions
+  id: ProductCatalog.Exceptions
+  children:
+  - ProductCatalog.Exceptions.InsufficientQuantityException
+  - ProductCatalog.Exceptions.ProductAlreadyExistsException
+  - ProductCatalog.Exceptions.ProductCatalogException
+  - ProductCatalog.Exceptions.ProductNotFoundException
+  langs:
+  - csharp
+  - vb
+  name: ProductCatalog.Exceptions
+  nameWithType: ProductCatalog.Exceptions
+  fullName: ProductCatalog.Exceptions
+  type: Namespace
+  assemblies:
+  - ProductCatalog
+references:
+- uid: ProductCatalog.Exceptions.ProductCatalogException
+  commentId: T:ProductCatalog.Exceptions.ProductCatalogException
+  parent: ProductCatalog.Exceptions
+  href: ProductCatalog.Exceptions.ProductCatalogException.html
+  name: ProductCatalogException
+  nameWithType: ProductCatalogException
+  fullName: ProductCatalog.Exceptions.ProductCatalogException
+- uid: ProductCatalog.Exceptions.ProductNotFoundException
+  commentId: T:ProductCatalog.Exceptions.ProductNotFoundException
+  href: ProductCatalog.Exceptions.ProductNotFoundException.html
+  name: ProductNotFoundException
+  nameWithType: ProductNotFoundException
+  fullName: ProductCatalog.Exceptions.ProductNotFoundException
+- uid: ProductCatalog.Exceptions.ProductAlreadyExistsException
+  commentId: T:ProductCatalog.Exceptions.ProductAlreadyExistsException
+  href: ProductCatalog.Exceptions.ProductAlreadyExistsException.html
+  name: ProductAlreadyExistsException
+  nameWithType: ProductAlreadyExistsException
+  fullName: ProductCatalog.Exceptions.ProductAlreadyExistsException
+- uid: ProductCatalog.Exceptions.InsufficientQuantityException
+  commentId: T:ProductCatalog.Exceptions.InsufficientQuantityException
+  href: ProductCatalog.Exceptions.InsufficientQuantityException.html
+  name: InsufficientQuantityException
+  nameWithType: InsufficientQuantityException
+  fullName: ProductCatalog.Exceptions.InsufficientQuantityException
+- uid: ProductCatalog.Exceptions
+  commentId: N:ProductCatalog.Exceptions
+  href: ProductCatalog.html
+  name: ProductCatalog.Exceptions
+  nameWithType: ProductCatalog.Exceptions
+  fullName: ProductCatalog.Exceptions
+  spec.csharp:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Exceptions
+    name: Exceptions
+    href: ProductCatalog.Exceptions.html
+  spec.vb:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Exceptions
+    name: Exceptions
+    href: ProductCatalog.Exceptions.html
