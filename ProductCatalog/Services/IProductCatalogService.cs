@@ -1,4 +1,5 @@
 using ProductCatalog.Models;
+using ProductCatalog.Logging;
 
 namespace ProductCatalog.Services;
 
@@ -52,4 +53,16 @@ public interface IProductCatalogService
     /// </summary>
     /// <returns>Number of unique products</returns>
     int GetProductCount();
+
+    /// <summary>
+    /// Adds an observer to receive notifications of catalog operations
+    /// </summary>
+    /// <param name="observer">The observer to add</param>
+    void AddObserver(IProductCatalogObserver observer);
+
+    /// <summary>
+    /// Removes an observer from receiving notifications
+    /// </summary>
+    /// <param name="observer">The observer to remove</param>
+    void RemoveObserver(IProductCatalogObserver observer);
 } 

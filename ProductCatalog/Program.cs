@@ -1,5 +1,6 @@
 using ProductCatalog.Exceptions;
 using ProductCatalog.Services;
+using ProductCatalog.Logging;
 
 namespace ProductCatalog;
 
@@ -7,9 +8,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("=== Product Catalog Demo ===\n");
+        Console.WriteLine("=== Product Catalog Demo with Logging & Diagnostics ===\n");
 
         var catalog = new ProductCatalogService();
+        
+        // Setup observers for logging and diagnostics
+        var consoleLogger = new ConsoleLogger(useColors: true);
+        var fileLogger = new FileLogger(); // Will use default path
+        var diagnosticsCollector = new DiagnosticsCollector();
+        
+        catalog.AddObserver(consoleLogger);
+        catalog.AddObserver(fileLogger);
+        catalog.AddObserver(diagnosticsCollector);
+        
+        Console.WriteLine("Logging and diagnostics observers configured.\n");
 
         try
         {
@@ -111,6 +123,15 @@ class Program
             Console.WriteLine($"Unexpected error: {ex.Message}");
         }
 
+        // Display diagnostics report
+        Console.WriteLine("\n" + new string('=', 60));
+        Console.WriteLine(diagnosticsCollector.GetSummary());
+        Console.WriteLine(new string('=', 60));
+
+        // Cleanup
+        fileLogger.Dispose();
+        
         Console.WriteLine("\nDemo completed successfully!");
+        Console.WriteLine("Check the log files for detailed operation history.");
     }
 } 
