@@ -7,10 +7,52 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("=== Product Catalog Demo ===\n");
+        Console.WriteLine("=== Product Catalog Demo with Factory Pattern ===\n");
 
-        var catalog = new ProductCatalogService();
+        // Demonstrate the factory pattern with different storage types
+        DemonstrateStorageTypes();
+    }
 
+    static void DemonstrateStorageTypes()
+    {
+        Console.WriteLine("Choose storage type:");
+        Console.WriteLine("1. In-Memory (default)");
+        Console.WriteLine("2. Cosmos DB (local emulator)");
+        Console.WriteLine("3. Redis (local instance)");
+        Console.Write("Enter choice (1-3): ");
+
+        var choice = Console.ReadLine();
+        
+        StorageConfiguration config = choice?.Trim() switch
+        {
+            "2" => StorageConfigurationHelper.CreateCosmosDbConfiguration(),
+            "3" => StorageConfigurationHelper.CreateRedisConfiguration(),
+            _ => StorageConfigurationHelper.CreateInMemoryConfiguration()
+        };
+
+        Console.WriteLine($"\nUsing {config.StorageType} storage...\n");
+
+        try
+        {
+            var factory = new ProductCatalogServiceFactory(config);
+            var catalog = factory.CreateService();
+
+            RunProductCatalogDemo(catalog);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to initialize storage: {ex.Message}");
+            Console.WriteLine("Falling back to in-memory storage...\n");
+            
+            // Fallback to in-memory
+            var fallbackFactory = new ProductCatalogServiceFactory(StorageConfigurationHelper.CreateInMemoryConfiguration());
+            var fallbackCatalog = fallbackFactory.CreateService();
+            RunProductCatalogDemo(fallbackCatalog);
+        }
+    }
+
+    static void RunProductCatalogDemo(IProductCatalogService catalog)
+    {
         try
         {
             // Demonstrate adding products with categories and tags
@@ -162,5 +204,7 @@ class Program
         }
 
         Console.WriteLine("\nDemo completed successfully!");
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey();
     }
 } 
