@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: ProductCatalog.Services
+  commentId: N:ProductCatalog.Services
+  id: ProductCatalog.Services
+  children:
+  - ProductCatalog.Services.IProductCatalogService
+  - ProductCatalog.Services.ProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: ProductCatalog.Services
+  nameWithType: ProductCatalog.Services
+  fullName: ProductCatalog.Services
+  type: Namespace
+  assemblies:
+  - ProductCatalog
+references:
+- uid: ProductCatalog.Services.IProductCatalogService
+  commentId: T:ProductCatalog.Services.IProductCatalogService
+  parent: ProductCatalog.Services
+  href: ProductCatalog.Services.IProductCatalogService.html
+  name: IProductCatalogService
+  nameWithType: IProductCatalogService
+  fullName: ProductCatalog.Services.IProductCatalogService
+- uid: ProductCatalog.Services.ProductCatalogService
+  commentId: T:ProductCatalog.Services.ProductCatalogService
+  href: ProductCatalog.Services.ProductCatalogService.html
+  name: ProductCatalogService
+  nameWithType: ProductCatalogService
+  fullName: ProductCatalog.Services.ProductCatalogService
+- uid: ProductCatalog.Services
+  commentId: N:ProductCatalog.Services
+  href: ProductCatalog.html
+  name: ProductCatalog.Services
+  nameWithType: ProductCatalog.Services
+  fullName: ProductCatalog.Services
+  spec.csharp:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Services
+    name: Services
+    href: ProductCatalog.Services.html
+  spec.vb:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Services
+    name: Services
+    href: ProductCatalog.Services.html
