@@ -1,6 +1,5 @@
-# Initialize Cosmos DB and Redis for Product Catalog local development
-# This script sets up the local development environment for the Product Catalog application
-# with support for Cosmos DB Emulator and Redis
+# Initialize Storage Emulators for Product Catalog local development
+# This script sets up Cosmos DB Emulator and Redis for local development
 # Optimized for both VS Code terminal and external PowerShell execution
 
 #Requires -Version 5.1
@@ -30,10 +29,10 @@ if ($PSVersionTable.PSVersion.Major -ge 6) {
 # Function to show help
 function Show-Help {
     Write-Host ""
-    Write-Host "Product Catalog Local Storage Initialization Script" -ForegroundColor Magenta
+    Write-Host "Product Catalog Storage Emulators Initialization Script" -ForegroundColor Magenta
     Write-Host ""
     Write-Host "USAGE:" -ForegroundColor Yellow
-    Write-Host "  .\initialize-local-storage.ps1 [OPTIONS]"
+    Write-Host "  .\initialize-emulators.ps1 [OPTIONS]"
     Write-Host ""
     Write-Host "OPTIONS:" -ForegroundColor Yellow
     Write-Host "  -SkipCosmosDB     Skip Cosmos DB Emulator initialization"
@@ -42,14 +41,18 @@ function Show-Help {
     Write-Host "  -Help             Show this help message"
     Write-Host ""
     Write-Host "EXAMPLES:" -ForegroundColor Yellow
-    Write-Host "  .\initialize-local-storage.ps1"
-    Write-Host "  .\initialize-local-storage.ps1 -VerboseOutput"
-    Write-Host "  .\initialize-local-storage.ps1 -SkipCosmosDB"
-    Write-Host "  .\initialize-local-storage.ps1 -SkipRedis -VerboseOutput"
+    Write-Host "  .\initialize-emulators.ps1"
+    Write-Host "  .\initialize-emulators.ps1 -VerboseOutput"
+    Write-Host "  .\initialize-emulators.ps1 -SkipCosmosDB"
+    Write-Host "  .\initialize-emulators.ps1 -SkipRedis -VerboseOutput"
+    Write-Host ""
+    Write-Host "DESCRIPTION:" -ForegroundColor Yellow
+    Write-Host "  This script initializes storage emulators only."
+    Write-Host "  After running this script, use 'initialize-catalog-data.ps1' to set up database structures."
     Write-Host ""
     Write-Host "TROUBLESHOOTING:" -ForegroundColor Yellow
     Write-Host "  If you have issues running this script outside VS Code:"
-    Write-Host "  - Use: powershell -ExecutionPolicy Bypass -File initialize-local-storage.ps1"
+    Write-Host "  - Use: powershell -ExecutionPolicy Bypass -File initialize-emulators.ps1"
     Write-Host "  - See TROUBLESHOOTING.md for more solutions"
     Write-Host ""
     exit 0
@@ -121,28 +124,11 @@ function Write-Step {
     }
 }
 
-# DEPRECATED: This script is kept for backward compatibility
-# Please use the new split scripts instead:
-# 1. .\initialize-emulators.ps1 (starts emulators)
-# 2. .\initialize-catalog-data.ps1 (initializes data structures)
-
-Write-Warning "This script is deprecated. Please use the new split approach:"
-Write-Host "1. .\initialize-emulators.ps1        # Start emulators" -ForegroundColor Yellow
-Write-Host "2. .\initialize-catalog-data.ps1     # Initialize data structures" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "Continue with legacy combined script? (y/N): " -NoNewline -ForegroundColor Cyan
-$response = Read-Host
-if ($response -notmatch '^[yY]') {
-    Write-Host "Use the new split scripts for better modularity and control." -ForegroundColor Green
-    exit 0
-}
-Write-Host ""
-
 # Main execution with comprehensive error handling
 try {
     Write-Host ""
-    Write-Host "=== Product Catalog Local Storage Initialization ===" -ForegroundColor Magenta
-    Write-Host "This script will initialize Cosmos DB and Redis for local development" -ForegroundColor Cyan
+    Write-Host "=== Product Catalog Storage Emulators Initialization ===" -ForegroundColor Magenta
+    Write-Host "This script will initialize Cosmos DB Emulator and Redis for local development" -ForegroundColor Cyan
     Write-Host "Start time: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Gray
     Write-Host ""
 
@@ -198,19 +184,6 @@ try {
         }
     } else {
         Write-Info "WSL not available (optional for Redis setup)"
-    }
-    
-    # Check for Node.js (for Cosmos DB sample data)
-    $nodeCheck = Get-Command node -ErrorAction SilentlyContinue
-    if ($nodeCheck) {
-        try {
-            $nodeVersion = node --version 2>$null
-            Write-Success "Node.js available: $nodeVersion"
-        } catch {
-            Write-Info "Node.js available but version check failed"
-        }
-    } else {
-        Write-Info "Node.js not found (optional for sample data initialization)"
     }
 
     # Cosmos DB Emulator section
@@ -280,13 +253,6 @@ try {
                     Write-Info "You can try starting it manually from the Start menu"
                 }
             }
-            
-            # Initialize sample data if Node.js is available
-            if ($nodeCheck -and -not $SkipCosmosDB) {
-                Write-Step "Preparing Cosmos DB sample data initialization..."
-                Write-Info "Sample data will be initialized when you run the application with Cosmos DB backend"
-                Write-Info "The application will create the database and container automatically"
-            }
         }
     } else {
         Write-Info "Skipping Cosmos DB Emulator initialization"
@@ -301,14 +267,14 @@ try {
         $redisPath = ""
         $useWSL = $false
         
-        # Method 1: Check PATH
+        # Method 1: Check PATH for Windows Redis
         $redisCmd = Get-Command redis-server -ErrorAction SilentlyContinue
         if ($redisCmd) {
             $redisFound = $true
             $redisPath = $redisCmd.Source
             Write-Success "Redis found in PATH: $redisPath"
         } else {
-            # Method 2: Check common installation locations
+            # Method 2: Check common Windows installation locations
             $commonPaths = @(
                 "${env:ProgramFiles}\Redis\redis-server.exe",
                 "${env:ProgramFiles(x86)}\Redis\redis-server.exe",
@@ -416,8 +382,8 @@ try {
                     Write-ErrorMsg "Error managing Redis in WSL: $($_.Exception.Message)"
                 }
             } else {
-                # Windows Redis management (existing logic)
-                Write-Verbose "Checking if Redis is running..."
+                # Windows Redis management
+                Write-Verbose "Managing Redis on Windows..."
                 $redisProcess = Get-Process -Name "redis-server" -ErrorAction SilentlyContinue
                 if ($redisProcess) {
                     Write-Info "Redis is already running (PID: $($redisProcess.Id))"
@@ -475,21 +441,18 @@ try {
     }
 
     # Summary and next steps
-    Write-Section "Initialization Summary"
-    Write-Success "Local storage initialization completed successfully"
-    Write-Info "You can now run the Product Catalog application with:"
-    Write-Info "  dotnet run --project ProductCatalog"
+    Write-Section "Emulator Initialization Summary"
+    Write-Success "Storage emulators initialization completed successfully"
     Write-Info ""
-    Write-Info "The application will prompt for backend selection:"
-    Write-Info "  1. In-Memory (default, no setup required)"
-    Write-Info "  2. Cosmos DB (requires emulator to be ready)"
-    Write-Info "  3. Redis (requires Redis server to be running)"
+    Write-Info "Next Steps:"
+    Write-Info "1. Run 'initialize-catalog-data.ps1' to set up database structures"
+    Write-Info "2. Or run 'dotnet run --project ProductCatalog' to start the application"
+    Write-Info ""
     
     if (-not $SkipCosmosDB) {
-        Write-Info ""
         Write-Info "Cosmos DB Resources:"
         Write-Info "  Data Explorer: https://localhost:8081/_explorer/index.html"
-        Write-Info "  Connection string will be displayed when you select Cosmos DB backend"
+        Write-Info "  The application will create database and container automatically"
     }
     
     if (-not $SkipRedis -and $redisFound) {
@@ -498,7 +461,7 @@ try {
             Write-Info "Redis is configured and running in WSL"
             Write-Info "WSL Redis commands: wsl redis-cli ping"
         } else {
-            Write-Info "Redis is configured and ready for use"
+            Write-Info "Redis is configured and running on Windows"
         }
     }
     
@@ -507,12 +470,12 @@ try {
     Write-Host ""
 
 } catch {
-    Write-ErrorMsg "Initialization failed with error: $($_.Exception.Message)"
+    Write-ErrorMsg "Emulator initialization failed with error: $($_.Exception.Message)"
     Write-ErrorMsg "Stack trace: $($_.ScriptStackTrace)"
     Write-Host ""
     Write-Info "Troubleshooting options:"
     Write-Info "1. Run as Administrator: Right-click PowerShell -> Run as administrator"
-    Write-Info "2. Use execution policy bypass: powershell -ExecutionPolicy Bypass -File initialize-local-storage.ps1"
+    Write-Info "2. Use execution policy bypass: powershell -ExecutionPolicy Bypass -File initialize-emulators.ps1"
     Write-Info "3. See TROUBLESHOOTING.md for detailed solutions"
     Write-Host ""
     exit 1

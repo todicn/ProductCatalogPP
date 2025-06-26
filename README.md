@@ -53,8 +53,11 @@ ProductCatalogPP1/
 │   │   └── ExceptionTests.cs         # Exception tests
 │   └── ProductCatalog.Tests.csproj   # Test project file
 ├── ProductCatalog.sln                 # Solution file
-├── initialize-local-storage.ps1       # PowerShell script for local storage setup
+├── initialize-emulators.ps1           # PowerShell script for emulator startup
+├── initialize-catalog-data.ps1        # PowerShell script for data initialization
+├── initialize-local-storage.ps1       # Legacy combined script (deprecated)
 ├── STORAGE_CONFIGURATION_GUIDE.md     # Detailed storage configuration guide
+├── TROUBLESHOOTING.md                  # Troubleshooting guide for local setup
 └── README.md                          # This file
 ```
 
@@ -84,35 +87,59 @@ dotnet build
 
 ### Setting Up Local Storage (Optional)
 
-If you want to test with Cosmos DB or Redis, you have several options for running the initialization script:
+If you want to test with Cosmos DB or Redis, use the new split initialization approach:
 
-#### Option 1: Full Featured Script (VS Code Terminal Recommended)
+#### Quick Setup (Recommended)
 ```powershell
-.\initialize-local-storage.ps1
+# 1. Start emulators first
+.\initialize-emulators.ps1
+
+# 2. Initialize database structures and sample data
+.\initialize-catalog-data.ps1
 ```
 
-#### Option 2: Simplified Script (External PowerShell)
+#### Advanced Options
+
+**Start specific emulators:**
 ```powershell
-.\init-simple.ps1
+.\initialize-emulators.ps1 -SkipCosmosDB    # Redis only
+.\initialize-emulators.ps1 -SkipRedis       # Cosmos DB only
 ```
 
-#### Option 3: Batch Wrapper (Command Prompt)
-```cmd
-initialize-local-storage.bat
-```
-
-#### Option 4: Execution Policy Bypass
+**Initialize specific backends:**
 ```powershell
-powershell -ExecutionPolicy Bypass -File "initialize-local-storage.ps1"
+.\initialize-catalog-data.ps1 -Backend CosmosDB  # Cosmos DB only
+.\initialize-catalog-data.ps1 -Backend Redis     # Redis only
+.\initialize-catalog-data.ps1 -Backend Both      # Both (default)
 ```
 
-**Note:** If you encounter issues running scripts outside VS Code, use the simplified script (`init-simple.ps1`) or see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for solutions.
+**Reset and repopulate data:**
+```powershell
+.\initialize-catalog-data.ps1 -ResetData
+```
 
-These scripts will:
-- Wait for Cosmos DB Emulator to be ready
-- Initialize the database and container
-- Wait for Redis to be ready
-- Configure Redis for the application
+**Skip sample data (structure only):**
+```powershell
+.\initialize-catalog-data.ps1 -SkipSampleData
+```
+
+#### Legacy Combined Script
+```powershell
+.\initialize-local-storage.ps1  # Still available but deprecated
+```
+
+#### Execution Policy Issues
+If you encounter execution policy issues:
+```powershell
+powershell -ExecutionPolicy Bypass -File "initialize-emulators.ps1"
+powershell -ExecutionPolicy Bypass -File "initialize-catalog-data.ps1"
+```
+
+**Note:** For issues running scripts outside VS Code, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed solutions.
+
+The scripts will:
+- **initialize-emulators.ps1**: Start Cosmos DB Emulator and Redis server
+- **initialize-catalog-data.ps1**: Create database structures and populate sample data
 
 ### Running the Application
 

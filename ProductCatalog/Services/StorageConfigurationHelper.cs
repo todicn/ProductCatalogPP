@@ -27,8 +27,8 @@ public static class StorageConfigurationHelper
         {
             StorageType = StorageType.CosmosDb,
             CosmosDbConnectionString = null, // Will use emulator default
-            CosmosDbDatabaseName = "TinyUrlDB",
-            CosmosDbContainerName = "UrlMappings"
+            CosmosDbDatabaseName = "ProductCatalogDB",
+            CosmosDbContainerName = "Products"
         };
     }
 
@@ -48,8 +48,8 @@ public static class StorageConfigurationHelper
         {
             StorageType = StorageType.CosmosDb,
             CosmosDbConnectionString = connectionString,
-            CosmosDbDatabaseName = databaseName ?? "TinyUrlDB",
-            CosmosDbContainerName = containerName ?? "UrlMappings"
+            CosmosDbDatabaseName = databaseName ?? "ProductCatalogDB",
+            CosmosDbContainerName = containerName ?? "Products"
         };
     }
 
@@ -135,8 +135,8 @@ public static class StorageConfigurationHelper
         {
             StorageType = StorageType.CosmosDb,
             CosmosDbConnectionString = connectionString, // null will use emulator default
-            CosmosDbDatabaseName = databaseName ?? "TinyUrlDB",
-            CosmosDbContainerName = containerName ?? "UrlMappings"
+            CosmosDbDatabaseName = databaseName ?? "ProductCatalogDB",
+            CosmosDbContainerName = containerName ?? "Products"
         };
     }
 

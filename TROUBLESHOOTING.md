@@ -2,21 +2,40 @@
 
 This guide helps resolve common issues when running the initialization scripts outside of VS Code terminal.
 
+## New Split Script Approach (Recommended)
+
+The initialization process has been split into two separate scripts for better modularity:
+
+### 1. Start Emulators First
+```powershell
+.\initialize-emulators.ps1 -VerboseOutput
+```
+
+### 2. Initialize Data Structures
+```powershell
+.\initialize-catalog-data.ps1 -VerboseOutput
+```
+
 ## Quick Start Options
 
-### Option 1: Use the Robust PowerShell Script
+### Option 1: New Split Scripts (Recommended)
 ```powershell
-.\initialize-local-storage-robust.ps1 -VerboseOutput
+# Step 1: Start emulators
+.\initialize-emulators.ps1
+
+# Step 2: Initialize database structures and sample data
+.\initialize-catalog-data.ps1
 ```
 
-### Option 2: Use the Batch File Wrapper
-```cmd
-initialize-local-storage.bat
+### Option 2: Legacy Combined Script
+```powershell
+.\initialize-local-storage.ps1 -VerboseOutput
 ```
 
-### Option 3: Use Original Script with Execution Policy Bypass
+### Option 3: Execution Policy Bypass
 ```powershell
-powershell -ExecutionPolicy Bypass -File "initialize-local-storage.ps1" -Verbose
+powershell -ExecutionPolicy Bypass -File "initialize-emulators.ps1"
+powershell -ExecutionPolicy Bypass -File "initialize-catalog-data.ps1"
 ```
 
 ## Common Issues and Solutions
@@ -158,6 +177,39 @@ powershell -ExecutionPolicy Bypass -File "initialize-local-storage.ps1" -Verbose
   netstat -ano | findstr "8081"  REM Cosmos DB
   netstat -ano | findstr "6379"  REM Redis
   ```
+
+## Script-Specific Troubleshooting
+
+### Emulator Initialization (initialize-emulators.ps1)
+
+**Common Issues:**
+- Cosmos DB Emulator not installed
+- Redis not available (Windows or WSL)
+- Administrator privileges required
+
+**Solutions:**
+```powershell
+# Check if running with proper flags
+.\initialize-emulators.ps1 -SkipCosmosDB -VerboseOutput  # Redis only
+.\initialize-emulators.ps1 -SkipRedis -VerboseOutput     # Cosmos DB only
+```
+
+### Data Initialization (initialize-catalog-data.ps1)
+
+**Common Issues:**
+- Emulators not running
+- .NET SDK not available
+- Project dependencies not restored
+
+**Solutions:**
+```powershell
+# Ensure emulators are running first
+.\initialize-emulators.ps1
+
+# Then initialize data for specific backend
+.\initialize-catalog-data.ps1 -Backend CosmosDB -VerboseOutput
+.\initialize-catalog-data.ps1 -Backend Redis -VerboseOutput
+```
 
 ## Environment-Specific Solutions
 

@@ -2,6 +2,39 @@
 
 This document explains how to use the Product Catalog application with different storage backends using the Factory Pattern.
 
+## Quick Start - Local Development Setup
+
+For local development with emulators, use the split initialization approach:
+
+### Step 1: Start Emulators
+
+```powershell
+.\initialize-emulators.ps1
+```
+
+This will start:
+- Cosmos DB Emulator (if not already running)
+- Redis server (Windows or WSL)
+
+### Step 2: Initialize Data Structures
+
+```powershell
+.\initialize-catalog-data.ps1
+```
+
+This will:
+- Create Cosmos DB database (`ProductCatalogDB`) and container (`Products`)
+- Configure indexing for optimal performance
+- Populate sample data for both backends
+
+### Step 3: Run the Application
+
+```bash
+dotnet run --project ProductCatalog
+```
+
+Then select your preferred storage backend (1=In-Memory, 2=Cosmos DB, 3=Redis).
+
 ## Available Storage Types
 
 The application supports three storage backends:
