@@ -84,13 +84,31 @@ dotnet build
 
 ### Setting Up Local Storage (Optional)
 
-If you want to test with Cosmos DB or Redis, run the PowerShell initialization script:
+If you want to test with Cosmos DB or Redis, you have several options for running the initialization script:
 
+#### Option 1: Full Featured Script (VS Code Terminal Recommended)
 ```powershell
 .\initialize-local-storage.ps1
 ```
 
-This script will:
+#### Option 2: Simplified Script (External PowerShell)
+```powershell
+.\init-simple.ps1
+```
+
+#### Option 3: Batch Wrapper (Command Prompt)
+```cmd
+initialize-local-storage.bat
+```
+
+#### Option 4: Execution Policy Bypass
+```powershell
+powershell -ExecutionPolicy Bypass -File "initialize-local-storage.ps1"
+```
+
+**Note:** If you encounter issues running scripts outside VS Code, use the simplified script (`init-simple.ps1`) or see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for solutions.
+
+These scripts will:
 - Wait for Cosmos DB Emulator to be ready
 - Initialize the database and container
 - Wait for Redis to be ready
