@@ -15,7 +15,7 @@ public class ProductCatalogService : IProductCatalogService
         _products = new Dictionary<string, Product>(StringComparer.OrdinalIgnoreCase);
     }
 
-    public void AddProduct(string name, int quantity)
+    public void AddProduct(string name, int quantity, string? category = null, IEnumerable<string>? tags = null)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Product name cannot be null or empty.", nameof(name));
@@ -28,7 +28,7 @@ public class ProductCatalogService : IProductCatalogService
         if (_products.ContainsKey(trimmedName))
             throw new ProductAlreadyExistsException(trimmedName);
 
-        var product = new Product(trimmedName, quantity);
+        var product = new Product(trimmedName, quantity, category, tags);
         _products.Add(trimmedName, product);
     }
 
@@ -89,5 +89,71 @@ public class ProductCatalogService : IProductCatalogService
     public int GetProductCount()
     {
         return _products.Count;
+    }
+
+    public IReadOnlyList<Product> SearchByCategory(string category)
+    {
+        if (string.IsNullOrWhiteSpace(category))
+            throw new ArgumentException("Category cannot be null or empty.", nameof(category));
+
+        return _products.Values
+            .Where(p => string.Equals(p.Category, category.Trim(), StringComparison.OrdinalIgnoreCase))
+            .OrderByDescending(p => p.Quantity)
+            .ThenBy(p => p.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public IReadOnlyList<Product> SearchByTag(string tag)
+    {
+        if (string.IsNullOrWhiteSpace(tag))
+            throw new ArgumentException("Tag cannot be null or empty.", nameof(tag));
+
+        return _products.Values
+            .Where(p => p.Tags.Contains(tag.Trim()))
+            .OrderByDescending(p => p.Quantity)
+            .ThenBy(p => p.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public IReadOnlyList<Product> SearchByTags(IEnumerable<string> tags)
+    {
+        if (tags == null)
+            throw new ArgumentNullException(nameof(tags));
+
+        var tagList = tags.Where(t => !string.IsNullOrWhiteSpace(t))
+                         .Select(t => t.Trim())
+                         .ToList();
+
+        if (!tagList.Any())
+            throw new ArgumentException("At least one valid tag must be provided.", nameof(tags));
+
+        return _products.Values
+            .Where(p => tagList.Any(tag => p.Tags.Contains(tag)))
+            .OrderByDescending(p => p.Quantity)
+            .ThenBy(p => p.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public IReadOnlyList<string> GetAllCategories()
+    {
+        return _products.Values
+            .Select(p => p.Category)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(c => c, StringComparer.OrdinalIgnoreCase)
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public IReadOnlyList<string> GetAllTags()
+    {
+        return _products.Values
+            .SelectMany(p => p.Tags)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(t => t, StringComparer.OrdinalIgnoreCase)
+            .ToList()
+            .AsReadOnly();
     }
 } 

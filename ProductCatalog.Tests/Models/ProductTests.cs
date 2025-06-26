@@ -18,6 +18,80 @@ public class ProductTests
         // Assert
         Assert.Equal(name, product.Name);
         Assert.Equal(quantity, product.Quantity);
+        Assert.Equal("General", product.Category);
+        Assert.Empty(product.Tags);
+    }
+
+    [Fact]
+    public void Constructor_WithCategoryAndTags_CreatesProductCorrectly()
+    {
+        // Arrange
+        var name = "Test Product";
+        var quantity = 10;
+        var category = "Electronics";
+        var tags = new[] { "computer", "work", "portable" };
+
+        // Act
+        var product = new Product(name, quantity, category, tags);
+
+        // Assert
+        Assert.Equal(name, product.Name);
+        Assert.Equal(quantity, product.Quantity);
+        Assert.Equal(category, product.Category);
+        Assert.Equal(3, product.Tags.Count);
+        Assert.Contains("computer", product.Tags);
+        Assert.Contains("work", product.Tags);
+        Assert.Contains("portable", product.Tags);
+    }
+
+    [Fact]
+    public void Constructor_EmptyCategory_DefaultsToGeneral()
+    {
+        // Act
+        var product = new Product("Test", 10, "");
+
+        // Assert
+        Assert.Equal("General", product.Category);
+    }
+
+    [Fact]
+    public void Constructor_NullCategory_DefaultsToGeneral()
+    {
+        // Act
+        var product = new Product("Test", 10, null);
+
+        // Assert
+        Assert.Equal("General", product.Category);
+    }
+
+    [Fact]
+    public void Constructor_EmptyAndNullTags_FiltersOut()
+    {
+        // Arrange
+        var tags = new[] { "valid", "", "  ", null, "another" };
+
+        // Act
+        var product = new Product("Test", 10, "Category", tags);
+
+        // Assert
+        Assert.Equal(2, product.Tags.Count);
+        Assert.Contains("valid", product.Tags);
+        Assert.Contains("another", product.Tags);
+    }
+
+    [Fact]
+    public void Tags_CaseInsensitive_NoDuplicates()
+    {
+        // Arrange
+        var tags = new[] { "Gaming", "GAMING", "gaming", "Work" };
+
+        // Act
+        var product = new Product("Test", 10, "Category", tags);
+
+        // Assert
+        Assert.Equal(2, product.Tags.Count);
+        Assert.Contains("Gaming", product.Tags);
+        Assert.Contains("Work", product.Tags);
     }
 
     [Theory]
@@ -51,16 +125,31 @@ public class ProductTests
     }
 
     [Fact]
-    public void ToString_ReturnsCorrectFormat()
+    public void ToString_WithoutTags_ReturnsCorrectFormat()
     {
         // Arrange
-        var product = new Product("Test Product", 15);
+        var product = new Product("Test Product", 15, "Electronics");
 
         // Act
         var result = product.ToString();
 
         // Assert
-        Assert.Equal("Test Product: 15 units", result);
+        Assert.Equal("Test Product: 15 units (Category: Electronics)", result);
+    }
+
+    [Fact]
+    public void ToString_WithTags_ReturnsCorrectFormat()
+    {
+        // Arrange
+        var product = new Product("Test Product", 15, "Electronics", new[] { "computer", "work" });
+
+        // Act
+        var result = product.ToString();
+
+        // Assert
+        Assert.Contains("Test Product: 15 units (Category: Electronics) [Tags:", result);
+        Assert.Contains("computer", result);
+        Assert.Contains("work", result);
     }
 
     [Fact]

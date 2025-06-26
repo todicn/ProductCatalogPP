@@ -7,8 +7,10 @@ public class Product
 {
     public string Name { get; set; }
     public int Quantity { get; set; }
+    public string Category { get; set; }
+    public ISet<string> Tags { get; set; }
 
-    public Product(string name, int quantity)
+    public Product(string name, int quantity, string category = "General", IEnumerable<string>? tags = null)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Product name cannot be null or empty.", nameof(name));
@@ -18,11 +20,22 @@ public class Product
 
         Name = name.Trim();
         Quantity = quantity;
+        Category = string.IsNullOrWhiteSpace(category) ? "General" : category.Trim();
+        Tags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        
+        if (tags != null)
+        {
+            foreach (var tag in tags.Where(t => !string.IsNullOrWhiteSpace(t)))
+            {
+                Tags.Add(tag.Trim());
+            }
+        }
     }
 
     public override string ToString()
     {
-        return $"{Name}: {Quantity} units";
+        var tagsString = Tags.Any() ? $" [Tags: {string.Join(", ", Tags)}]" : "";
+        return $"{Name}: {Quantity} units (Category: {Category}){tagsString}";
     }
 
     public override bool Equals(object? obj)

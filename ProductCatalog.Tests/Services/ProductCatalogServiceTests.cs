@@ -26,6 +26,25 @@ public class ProductCatalogServiceTests
         var product = _catalog.GetProduct("Test Product");
         Assert.Equal("Test Product", product.Name);
         Assert.Equal(10, product.Quantity);
+        Assert.Equal("General", product.Category);
+        Assert.Empty(product.Tags);
+    }
+
+    [Fact]
+    public void AddProduct_WithCategoryAndTags_AddsSuccessfully()
+    {
+        // Act
+        _catalog.AddProduct("Gaming Mouse", 15, "Electronics", new[] { "gaming", "wireless" });
+
+        // Assert
+        Assert.Equal(1, _catalog.GetProductCount());
+        var product = _catalog.GetProduct("Gaming Mouse");
+        Assert.Equal("Gaming Mouse", product.Name);
+        Assert.Equal(15, product.Quantity);
+        Assert.Equal("Electronics", product.Category);
+        Assert.Equal(2, product.Tags.Count);
+        Assert.Contains("gaming", product.Tags);
+        Assert.Contains("wireless", product.Tags);
     }
 
     [Theory]
@@ -380,15 +399,285 @@ public class ProductCatalogServiceTests
 
     #endregion
 
+    #region SearchByCategory Tests
+
+    [Fact]
+    public void SearchByCategory_ValidCategory_ReturnsMatchingProducts()
+    {
+        // Arrange
+        _catalog.AddProduct("Laptop", 10, "Electronics");
+        _catalog.AddProduct("Mouse", 25, "Electronics");
+        _catalog.AddProduct("Desk", 5, "Furniture");
+
+        // Act
+        var result = _catalog.SearchByCategory("Electronics");
+
+        // Assert
+        Assert.Equal(2, result.Count);
+        Assert.Contains(result, p => p.Name == "Mouse" && p.Quantity == 25);
+        Assert.Contains(result, p => p.Name == "Laptop" && p.Quantity == 10);
+        // Check ordering (by quantity descending)
+        Assert.Equal("Mouse", result[0].Name);
+        Assert.Equal("Laptop", result[1].Name);
+    }
+
+    [Fact]
+    public void SearchByCategory_CaseInsensitive_ReturnsMatchingProducts()
+    {
+        // Arrange
+        _catalog.AddProduct("Laptop", 10, "Electronics");
+
+        // Act
+        var result = _catalog.SearchByCategory("ELECTRONICS");
+
+        // Assert
+        Assert.Single(result);
+        Assert.Equal("Laptop", result[0].Name);
+    }
+
+    [Fact]
+    public void SearchByCategory_NoMatches_ReturnsEmptyList()
+    {
+        // Arrange
+        _catalog.AddProduct("Laptop", 10, "Electronics");
+
+        // Act
+        var result = _catalog.SearchByCategory("Furniture");
+
+        // Assert
+        Assert.Empty(result);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void SearchByCategory_InvalidCategory_ThrowsArgumentException(string invalidCategory)
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => _catalog.SearchByCategory(invalidCategory));
+    }
+
+    #endregion
+
+    #region SearchByTag Tests
+
+    [Fact]
+    public void SearchByTag_ValidTag_ReturnsMatchingProducts()
+    {
+        // Arrange
+        _catalog.AddProduct("Gaming Mouse", 20, "Electronics", new[] { "gaming", "wireless" });
+        _catalog.AddProduct("Gaming Keyboard", 15, "Electronics", new[] { "gaming", "mechanical" });
+        _catalog.AddProduct("Office Mouse", 10, "Electronics", new[] { "wireless", "office" });
+
+        // Act
+        var result = _catalog.SearchByTag("gaming");
+
+        // Assert
+        Assert.Equal(2, result.Count);
+        Assert.Contains(result, p => p.Name == "Gaming Mouse");
+        Assert.Contains(result, p => p.Name == "Gaming Keyboard");
+        // Check ordering (by quantity descending)
+        Assert.Equal("Gaming Mouse", result[0].Name);
+        Assert.Equal("Gaming Keyboard", result[1].Name);
+    }
+
+    [Fact]
+    public void SearchByTag_CaseInsensitive_ReturnsMatchingProducts()
+    {
+        // Arrange
+        _catalog.AddProduct("Gaming Mouse", 20, "Electronics", new[] { "gaming" });
+
+        // Act
+        var result = _catalog.SearchByTag("GAMING");
+
+        // Assert
+        Assert.Single(result);
+        Assert.Equal("Gaming Mouse", result[0].Name);
+    }
+
+    [Fact]
+    public void SearchByTag_NoMatches_ReturnsEmptyList()
+    {
+        // Arrange
+        _catalog.AddProduct("Laptop", 10, "Electronics", new[] { "work" });
+
+        // Act
+        var result = _catalog.SearchByTag("gaming");
+
+        // Assert
+        Assert.Empty(result);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void SearchByTag_InvalidTag_ThrowsArgumentException(string invalidTag)
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => _catalog.SearchByTag(invalidTag));
+    }
+
+    #endregion
+
+    #region SearchByTags Tests
+
+    [Fact]
+    public void SearchByTags_ValidTags_ReturnsMatchingProducts()
+    {
+        // Arrange
+        _catalog.AddProduct("Gaming Mouse", 20, "Electronics", new[] { "gaming", "wireless" });
+        _catalog.AddProduct("Office Mouse", 15, "Electronics", new[] { "office", "wireless" });
+        _catalog.AddProduct("Mechanical Keyboard", 10, "Electronics", new[] { "gaming", "mechanical" });
+        _catalog.AddProduct("Laptop", 5, "Electronics", new[] { "work", "portable" });
+
+        // Act
+        var result = _catalog.SearchByTags(new[] { "gaming", "office" });
+
+        // Assert
+        Assert.Equal(3, result.Count);
+        Assert.Contains(result, p => p.Name == "Gaming Mouse");
+        Assert.Contains(result, p => p.Name == "Office Mouse");
+        Assert.Contains(result, p => p.Name == "Mechanical Keyboard");
+        Assert.DoesNotContain(result, p => p.Name == "Laptop");
+    }
+
+    [Fact]
+    public void SearchByTags_EmptyTagList_ThrowsArgumentException()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => _catalog.SearchByTags(new string[0]));
+    }
+
+    [Fact]
+    public void SearchByTags_NullTags_ThrowsArgumentNullException()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => _catalog.SearchByTags(null));
+    }
+
+    [Fact]
+    public void SearchByTags_OnlyWhitespaceTags_ThrowsArgumentException()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => _catalog.SearchByTags(new[] { "", "   ", null }));
+    }
+
+    #endregion
+
+    #region GetAllCategories Tests
+
+    [Fact]
+    public void GetAllCategories_WithProducts_ReturnsUniqueCategories()
+    {
+        // Arrange
+        _catalog.AddProduct("Laptop", 10, "Electronics");
+        _catalog.AddProduct("Mouse", 15, "Electronics");
+        _catalog.AddProduct("Desk", 5, "Furniture");
+        _catalog.AddProduct("Pen", 20, "Office");
+
+        // Act
+        var result = _catalog.GetAllCategories();
+
+        // Assert
+        Assert.Equal(3, result.Count);
+        Assert.Contains("Electronics", result);
+        Assert.Contains("Furniture", result);
+        Assert.Contains("Office", result);
+        // Check alphabetical ordering
+        Assert.Equal("Electronics", result[0]);
+        Assert.Equal("Furniture", result[1]);
+        Assert.Equal("Office", result[2]);
+    }
+
+    [Fact]
+    public void GetAllCategories_EmptyCatalog_ReturnsEmptyList()
+    {
+        // Act
+        var result = _catalog.GetAllCategories();
+
+        // Assert
+        Assert.Empty(result);
+    }
+
+    [Fact]
+    public void GetAllCategories_CaseInsensitive_NoDuplicates()
+    {
+        // Arrange
+        _catalog.AddProduct("Product1", 10, "Electronics");
+        _catalog.AddProduct("Product2", 15, "ELECTRONICS");
+        _catalog.AddProduct("Product3", 5, "electronics");
+
+        // Act
+        var result = _catalog.GetAllCategories();
+
+        // Assert
+        Assert.Single(result);
+        Assert.Equal("Electronics", result[0]);
+    }
+
+    #endregion
+
+    #region GetAllTags Tests
+
+    [Fact]
+    public void GetAllTags_WithProducts_ReturnsUniqueTags()
+    {
+        // Arrange
+        _catalog.AddProduct("Mouse", 10, "Electronics", new[] { "gaming", "wireless" });
+        _catalog.AddProduct("Keyboard", 15, "Electronics", new[] { "gaming", "mechanical" });
+        _catalog.AddProduct("Laptop", 5, "Electronics", new[] { "work", "portable" });
+
+        // Act
+        var result = _catalog.GetAllTags();
+
+        // Assert
+        Assert.Equal(5, result.Count);
+        Assert.Contains("gaming", result);
+        Assert.Contains("wireless", result);
+        Assert.Contains("mechanical", result);
+        Assert.Contains("work", result);
+        Assert.Contains("portable", result);
+    }
+
+    [Fact]
+    public void GetAllTags_EmptyCatalog_ReturnsEmptyList()
+    {
+        // Act
+        var result = _catalog.GetAllTags();
+
+        // Assert
+        Assert.Empty(result);
+    }
+
+    [Fact]
+    public void GetAllTags_CaseInsensitive_NoDuplicates()
+    {
+        // Arrange
+        _catalog.AddProduct("Product1", 10, "Electronics", new[] { "Gaming" });
+        _catalog.AddProduct("Product2", 15, "Electronics", new[] { "GAMING" });
+        _catalog.AddProduct("Product3", 5, "Electronics", new[] { "gaming" });
+
+        // Act
+        var result = _catalog.GetAllTags();
+
+        // Assert
+        Assert.Single(result);
+        Assert.Equal("Gaming", result[0]);
+    }
+
+    #endregion
+
     #region Integration Tests
 
     [Fact]
     public void ComplexScenario_AddPurchaseRemoveList_WorksCorrectly()
     {
         // Add products
-        _catalog.AddProduct("Laptop", 10);
-        _catalog.AddProduct("Mouse", 25);
-        _catalog.AddProduct("Keyboard", 15);
+        _catalog.AddProduct("Laptop", 10, "Electronics", new[] { "computer", "work" });
+        _catalog.AddProduct("Mouse", 25, "Electronics", new[] { "computer", "gaming" });
+        _catalog.AddProduct("Keyboard", 15, "Electronics", new[] { "computer", "gaming" });
 
         // Purchase some items
         _catalog.PurchaseProduct("Mouse", 5);
@@ -406,6 +695,42 @@ public class ProductCatalogServiceTests
         Assert.Equal(20, products[0].Quantity);
         Assert.Equal("Laptop", products[1].Name);
         Assert.Equal(7, products[1].Quantity);
+    }
+
+    [Fact]
+    public void ComplexScenario_CategoryAndTagSearch_WorksCorrectly()
+    {
+        // Add products with categories and tags
+        _catalog.AddProduct("Gaming Mouse", 20, "Electronics", new[] { "gaming", "wireless" });
+        _catalog.AddProduct("Office Mouse", 15, "Electronics", new[] { "office", "wireless" });
+        _catalog.AddProduct("Gaming Keyboard", 10, "Electronics", new[] { "gaming", "mechanical" });
+        _catalog.AddProduct("Office Chair", 5, "Furniture", new[] { "office", "ergonomic" });
+
+        // Test category search
+        var electronicsProducts = _catalog.SearchByCategory("Electronics");
+        Assert.Equal(3, electronicsProducts.Count);
+
+        // Test tag search
+        var gamingProducts = _catalog.SearchByTag("gaming");
+        Assert.Equal(2, gamingProducts.Count);
+
+        // Test multiple tag search
+        var officeProducts = _catalog.SearchByTags(new[] { "office" });
+        Assert.Equal(2, officeProducts.Count);
+
+        // Test categories and tags lists
+        var categories = _catalog.GetAllCategories();
+        Assert.Equal(2, categories.Count);
+        Assert.Contains("Electronics", categories);
+        Assert.Contains("Furniture", categories);
+
+        var tags = _catalog.GetAllTags();
+        Assert.Equal(5, tags.Count);
+        Assert.Contains("gaming", tags);
+        Assert.Contains("wireless", tags);
+        Assert.Contains("office", tags);
+        Assert.Contains("mechanical", tags);
+        Assert.Contains("ergonomic", tags);
     }
 
     #endregion

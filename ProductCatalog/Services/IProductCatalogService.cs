@@ -12,9 +12,11 @@ public interface IProductCatalogService
     /// </summary>
     /// <param name="name">Product name</param>
     /// <param name="quantity">Initial quantity</param>
+    /// <param name="category">Product category (optional, defaults to "General")</param>
+    /// <param name="tags">Product tags (optional)</param>
     /// <exception cref="ProductAlreadyExistsException">Thrown when product already exists</exception>
     /// <exception cref="ArgumentException">Thrown when name is invalid or quantity is negative</exception>
-    void AddProduct(string name, int quantity);
+    void AddProduct(string name, int quantity, string? category = null, IEnumerable<string>? tags = null);
 
     /// <summary>
     /// Removes a product from the catalog
@@ -52,4 +54,37 @@ public interface IProductCatalogService
     /// </summary>
     /// <returns>Number of unique products</returns>
     int GetProductCount();
+
+    /// <summary>
+    /// Searches for products by category
+    /// </summary>
+    /// <param name="category">Category to search for</param>
+    /// <returns>List of products in the specified category</returns>
+    IReadOnlyList<Product> SearchByCategory(string category);
+
+    /// <summary>
+    /// Searches for products by tag
+    /// </summary>
+    /// <param name="tag">Tag to search for</param>
+    /// <returns>List of products that have the specified tag</returns>
+    IReadOnlyList<Product> SearchByTag(string tag);
+
+    /// <summary>
+    /// Searches for products that have any of the specified tags
+    /// </summary>
+    /// <param name="tags">Tags to search for</param>
+    /// <returns>List of products that have any of the specified tags</returns>
+    IReadOnlyList<Product> SearchByTags(IEnumerable<string> tags);
+
+    /// <summary>
+    /// Gets all unique categories in the catalog
+    /// </summary>
+    /// <returns>List of all categories</returns>
+    IReadOnlyList<string> GetAllCategories();
+
+    /// <summary>
+    /// Gets all unique tags in the catalog
+    /// </summary>
+    /// <returns>List of all tags</returns>
+    IReadOnlyList<string> GetAllTags();
 } 

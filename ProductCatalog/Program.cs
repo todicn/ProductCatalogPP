@@ -13,14 +13,16 @@ class Program
 
         try
         {
-            // Demonstrate adding products
+            // Demonstrate adding products with categories and tags
             Console.WriteLine("Adding products to catalog...");
-            catalog.AddProduct("Laptop", 10);
-            catalog.AddProduct("Mouse", 25);
-            catalog.AddProduct("Keyboard", 15);
-            catalog.AddProduct("Monitor", 8);
-            catalog.AddProduct("Headphones", 20);
-            Console.WriteLine($"Added 5 products. Total products: {catalog.GetProductCount()}\n");
+            catalog.AddProduct("Laptop", 10, "Electronics", new[] { "computer", "portable", "work" });
+            catalog.AddProduct("Mouse", 25, "Electronics", new[] { "computer", "wireless", "gaming" });
+            catalog.AddProduct("Keyboard", 15, "Electronics", new[] { "computer", "mechanical", "gaming" });
+            catalog.AddProduct("Monitor", 8, "Electronics", new[] { "computer", "display", "work" });
+            catalog.AddProduct("Headphones", 20, "Audio", new[] { "wireless", "music", "gaming" });
+            catalog.AddProduct("Coffee Mug", 50, "Office", new[] { "drink", "ceramic", "office" });
+            catalog.AddProduct("Desk Lamp", 12, "Furniture", new[] { "light", "work", "adjustable" });
+            Console.WriteLine($"Added 7 products. Total products: {catalog.GetProductCount()}\n");
 
             // List products by quantity
             Console.WriteLine("Products listed by quantity (descending):");
@@ -43,6 +45,54 @@ class Program
             Console.WriteLine("Products after purchases:");
             products = catalog.ListProductsByQuantity();
             foreach (var product in products)
+            {
+                Console.WriteLine($"  {product}");
+            }
+            Console.WriteLine();
+
+            // Demonstrate category and tag searches
+            Console.WriteLine("=== Category and Tag Search Demonstrations ===\n");
+
+            // Show all categories
+            Console.WriteLine("All categories:");
+            var categories = catalog.GetAllCategories();
+            foreach (var category in categories)
+            {
+                Console.WriteLine($"  - {category}");
+            }
+            Console.WriteLine();
+
+            // Show all tags
+            Console.WriteLine("All tags:");
+            var tags = catalog.GetAllTags();
+            foreach (var tag in tags)
+            {
+                Console.WriteLine($"  - {tag}");
+            }
+            Console.WriteLine();
+
+            // Search by category
+            Console.WriteLine("Products in 'Electronics' category:");
+            var electronicsProducts = catalog.SearchByCategory("Electronics");
+            foreach (var product in electronicsProducts)
+            {
+                Console.WriteLine($"  {product}");
+            }
+            Console.WriteLine();
+
+            // Search by single tag
+            Console.WriteLine("Products with 'gaming' tag:");
+            var gamingProducts = catalog.SearchByTag("gaming");
+            foreach (var product in gamingProducts)
+            {
+                Console.WriteLine($"  {product}");
+            }
+            Console.WriteLine();
+
+            // Search by multiple tags
+            Console.WriteLine("Products with 'work' or 'office' tags:");
+            var workOfficeProducts = catalog.SearchByTags(new[] { "work", "office" });
+            foreach (var product in workOfficeProducts)
             {
                 Console.WriteLine($"  {product}");
             }
