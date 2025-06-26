@@ -151,41 +151,131 @@ function Start-CosmosDBEmulator {
     
     Write-Section "Starting Cosmos DB Emulator"
     
+    # Stop any existing emulator process first to ensure clean start
+    Write-Info "Checking for existing Cosmos DB Emulator processes..."
+    $existingProcesses = Get-Process -Name "CosmosDB.Emulator" -ErrorAction SilentlyContinue
+    if ($existingProcesses) {
+        Write-Info "Stopping existing Cosmos DB Emulator processes..."
+        foreach ($process in $existingProcesses) {
+            try {
+                Write-Verbose "Stopping process PID: $($process.Id)"
+                $process.Kill()
+                $process.WaitForExit(10000)  # Wait up to 10 seconds
+                Write-Success "Stopped existing emulator process (PID: $($process.Id))"
+            } catch {
+                Write-Warning "Could not stop process PID $($process.Id): $($_.Exception.Message)"
+            }
+        }
+        # Wait a moment for cleanup
+        Start-Sleep -Seconds 3
+    }
+    
     if (Test-CosmosDBEmulatorRunning) {
-        Write-Info "Cosmos DB Emulator is already running"
-        return $true
+        Write-Info "Cosmos DB Emulator is still running after cleanup attempt"
+        # Try once more to kill any remaining processes
+        Get-Process -Name "CosmosDB.Emulator" -ErrorAction SilentlyContinue | ForEach-Object { 
+            try { $_.Kill() } catch { }
+        }
+        Start-Sleep -Seconds 2
     }
     
     Write-Info "Starting Cosmos DB Emulator from: $EmulatorPath"
     Write-Info "This may take several minutes on first startup..."
     
     try {
-        # Start the emulator with common parameters
+        # Check if port 8081 is already in use
+        Write-Verbose "Checking if port 8081 is available..."
+        $portCheck = Get-NetTCPConnection -LocalPort 8081 -ErrorAction SilentlyContinue
+        if ($portCheck) {
+            Write-Warning "Port 8081 is already in use by process ID: $($portCheck.OwningProcess)"
+            Write-Info "Attempting to identify the process..."
+            try {
+                $blockingProcess = Get-Process -Id $portCheck.OwningProcess -ErrorAction SilentlyContinue
+                if ($blockingProcess) {
+                    Write-Warning "Port 8081 is used by: $($blockingProcess.ProcessName) (PID: $($blockingProcess.Id))"
+                }
+            } catch {
+                Write-Verbose "Could not identify the process using port 8081"
+            }
+        }
+        
+        # Start the emulator with basic parameters
         $arguments = @(
             "/NoUI",           # Run without UI
-            "/NoExplorer",     # Don't open Data Explorer
-            "/EnableMongoDbEndpoint"  # Enable MongoDB API
+            "/NoExplorer"      # Don't open Data Explorer
         )
         
         Write-Verbose "Starting with arguments: $($arguments -join ' ')"
+        Write-Info "Full command: `"$EmulatorPath`" $($arguments -join ' ')"
         
-        $process = Start-Process -FilePath $EmulatorPath -ArgumentList $arguments -PassThru -WindowStyle Hidden
-        Write-Info "Emulator process started (PID: $($process.Id))"
+        # Try to start the process with more detailed error handling
+        $processStartInfo = New-Object System.Diagnostics.ProcessStartInfo
+        $processStartInfo.FileName = $EmulatorPath
+        $processStartInfo.Arguments = $arguments -join ' '
+        $processStartInfo.UseShellExecute = $false
+        $processStartInfo.RedirectStandardOutput = $true
+        $processStartInfo.RedirectStandardError = $true
+        $processStartInfo.CreateNoWindow = $true
         
-        # Wait a moment for the process to initialize
-        Start-Sleep -Seconds 5
+        $process = New-Object System.Diagnostics.Process
+        $process.StartInfo = $processStartInfo
         
-        # Check if process is still running
-        if ($process.HasExited) {
-            Write-Error "Emulator process exited unexpectedly (Exit Code: $($process.ExitCode))"
+        Write-Info "Attempting to start Cosmos DB Emulator..."
+        $started = $process.Start()
+        
+        if (-not $started) {
+            Write-Error "Failed to start the emulator process"
             return $false
         }
         
-        Write-Success "Cosmos DB Emulator startup initiated"
+        Write-Info "Emulator process started (PID: $($process.Id))"
+        
+        # Wait a bit longer for the process to initialize
+        Start-Sleep -Seconds 10
+        
+        # Check if process is still running
+        if ($process.HasExited) {
+            $exitCode = $process.ExitCode
+            $stderr = $process.StandardError.ReadToEnd()
+            $stdout = $process.StandardOutput.ReadToEnd()
+            
+            Write-Error "Emulator process exited unexpectedly (Exit Code: $exitCode)"
+            
+            # Decode common exit codes
+            switch ($exitCode) {
+                -2147014848 { Write-Error "Exit code -2147014848: This typically indicates a permissions or configuration issue" }
+                -1073741819 { Write-Error "Exit code -1073741819: Access violation - may need administrator privileges" }
+                -1073741515 { Write-Error "Exit code -1073741515: Missing dependency or DLL" }
+                default { Write-Error "Unknown exit code: $exitCode" }
+            }
+            
+            if ($stderr) {
+                Write-Error "Standard Error: $stderr"
+            }
+            if ($stdout) {
+                Write-Info "Standard Output: $stdout"
+            }
+            
+            # Additional diagnostics
+            Write-Warning "Diagnostic suggestions:"
+            Write-Warning "  1. Try running PowerShell as Administrator"
+            Write-Warning "  2. Check if Windows Defender or antivirus is blocking the emulator"
+            Write-Warning "  3. Verify the emulator installation is not corrupted"
+            Write-Warning "  4. Try restarting Windows to clear any lingering processes"
+            Write-Warning "  5. Check Event Viewer for additional error details"
+            
+            return $false
+        }
+        
+        Write-Success "Cosmos DB Emulator startup initiated successfully"
         return $true
         
     } catch {
         Write-Error "Failed to start Cosmos DB Emulator: $($_.Exception.Message)"
+        Write-Error "Exception Type: $($_.Exception.GetType().Name)"
+        if ($_.Exception.InnerException) {
+            Write-Error "Inner Exception: $($_.Exception.InnerException.Message)"
+        }
         return $false
     }
 }
@@ -499,11 +589,16 @@ async function initializeProductCatalogDB() {
     
     const endpoint = 'https://localhost:8081';
     const key = 'C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==';
+    
+    // Disable SSL verification for local emulator
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    
     const client = new CosmosClient({ 
         endpoint, 
         key,
         connectionPolicy: {
-            requestTimeout: 30000
+            requestTimeout: 30000,
+            enableEndpointDiscovery: false
         }
     });
 
@@ -514,7 +609,7 @@ async function initializeProductCatalogDB() {
             id: 'ProductCatalogDB',
             throughput: 400  // Minimum throughput for emulator
         });
-        console.log('✓ Database ProductCatalogDB is ready');
+        console.log('SUCCESS: Database ProductCatalogDB is ready');
 
         // Create Products container
         console.log('Creating container: Products...');
@@ -550,7 +645,7 @@ async function initializeProductCatalogDB() {
                 ]
             }
         });
-        console.log('✓ Container Products is ready');
+        console.log('SUCCESS: Container Products is ready');
 
         // Add some sample data
         console.log('Adding sample products...');
@@ -587,25 +682,25 @@ async function initializeProductCatalogDB() {
         for (const product of sampleProducts) {
             try {
                 await container.items.upsert(product);
-                console.log(`✓ Added sample product: ${product.name}`);
+                console.log('SUCCESS: Added sample product: ' + product.name);
             } catch (error) {
                 if (error.code === 409) {
-                    console.log(`- Sample product already exists: ${product.name}`);
+                    console.log('INFO: Sample product already exists: ' + product.name);
                 } else {
-                    console.error(`✗ Failed to add sample product ${product.name}:`, error.message);
+                    console.error('ERROR: Failed to add sample product ' + product.name + ':', error.message);
                 }
             }
         }
 
         console.log('');
-        console.log('✅ Cosmos DB initialization completed successfully!');
-        console.log('📊 Database: ProductCatalogDB');
-        console.log('📦 Container: Products');
-        console.log('🔗 Connection: https://localhost:8081');
-        console.log('🔑 Key: C2y6...Jw== (default emulator key)');
+        console.log('SUCCESS: Cosmos DB initialization completed successfully!');
+        console.log('Database: ProductCatalogDB');
+        console.log('Container: Products');
+        console.log('Connection: https://localhost:8081');
+        console.log('Key: C2y6...Jw== (default emulator key)');
         
     } catch (error) {
-        console.error('❌ Error during Cosmos DB initialization:', error.message);
+        console.error('ERROR: Error during Cosmos DB initialization:', error.message);
         if (error.code) {
             console.error('Error code:', error.code);
         }
@@ -643,7 +738,7 @@ initializeProductCatalogDB().catch(err => {
 
         # Save and run the initialization script
         Write-Verbose "Creating initialization script: $scriptPath"
-        $script | Out-File -FilePath "init-cosmos.js" -Encoding UTF8
+        $script | Out-File -FilePath "init-cosmos.js" -Encoding UTF8NoBOM
 
         Write-Info "Executing Cosmos DB initialization script..."
         $nodeOutput = node init-cosmos.js 2>&1
@@ -791,8 +886,38 @@ function Main {
             # Try to start the emulator if it's not running
             if (-not (Test-CosmosDBEmulatorRunning)) {
                 Write-Info "Cosmos DB Emulator is not running. Attempting to start it..."
-                if (-not (Start-CosmosDBEmulator -EmulatorPath $cosmosCheck.Path)) {
-                    Write-Error "Failed to start Cosmos DB Emulator. Please start it manually and try again."
+                
+                # First attempt with the automated method
+                $startupSuccess = Start-CosmosDBEmulator -EmulatorPath $cosmosCheck.Path
+                
+                if (-not $startupSuccess) {
+                    Write-Warning "Automated startup failed. Trying alternative method..."
+                    
+                    # Alternative: Try to start manually with simpler command
+                    Write-Info "Attempting to start with basic parameters only..."
+                    try {
+                        $altProcess = Start-Process -FilePath $cosmosCheck.Path -ArgumentList "/NoUI" -PassThru -WindowStyle Hidden
+                        Start-Sleep -Seconds 15
+                        
+                        if (-not $altProcess.HasExited) {
+                            Write-Info "Alternative startup method initiated. Process PID: $($altProcess.Id)"
+                            $startupSuccess = $true
+                        } else {
+                            Write-Error "Alternative startup also failed (Exit Code: $($altProcess.ExitCode))"
+                        }
+                    } catch {
+                        Write-Error "Alternative startup method failed: $($_.Exception.Message)"
+                    }
+                }
+                
+                if (-not $startupSuccess) {
+                    Write-Error "All automatic startup methods failed."
+                    Write-Warning "Manual intervention required:"
+                    Write-Warning "  1. Open Command Prompt as Administrator"
+                    Write-Warning "  2. Navigate to the emulator directory"
+                    Write-Warning "  3. Run: CosmosDB.Emulator.exe /NoUI"
+                    Write-Warning "  4. Wait for the emulator to start, then re-run this script"
+                    Write-Info "Emulator path: $($cosmosCheck.Path)"
                     exit 1
                 }
             }
@@ -803,7 +928,7 @@ function Main {
                 Write-Success "Cosmos DB setup completed successfully!"
             }
         } else {
-            Write-Warning "Cosmos DB initialization skipped (--SkipCosmosDB flag used)"
+            Write-Warning "Cosmos DB initialization skipped (-SkipCosmosDB flag used)"
         }
         
         # Initialize Redis if not skipped
@@ -820,7 +945,7 @@ function Main {
                 exit 1
             }
         } else {
-            Write-Warning "Redis initialization skipped (--SkipRedis flag used)"
+            Write-Warning "Redis initialization skipped (-SkipRedis flag used)"
         }
         
         # Final summary
@@ -864,7 +989,7 @@ function Main {
         Write-Warning "  1. Run PowerShell as Administrator"
         Write-Warning "  2. Check that all prerequisites are met"
         Write-Warning "  3. Verify network connectivity"
-        Write-Warning "  4. Try running with --Verbose flag for more details"
+        Write-Warning "  4. Try running with -Verbose flag for more details"
         Write-Warning "  5. Check Windows Event Logs for system errors"
         
         exit 1
