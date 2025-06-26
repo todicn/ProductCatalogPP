@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: ProductCatalog.Models
+  commentId: N:ProductCatalog.Models
+  id: ProductCatalog.Models
+  children:
+  - ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: ProductCatalog.Models
+  nameWithType: ProductCatalog.Models
+  fullName: ProductCatalog.Models
+  type: Namespace
+  assemblies:
+  - ProductCatalog
+references:
+- uid: ProductCatalog.Models.Product
+  commentId: T:ProductCatalog.Models.Product
+  parent: ProductCatalog.Models
+  href: ProductCatalog.Models.Product.html
+  name: Product
+  nameWithType: Product
+  fullName: ProductCatalog.Models.Product
+- uid: ProductCatalog.Models
+  commentId: N:ProductCatalog.Models
+  href: ProductCatalog.html
+  name: ProductCatalog.Models
+  nameWithType: ProductCatalog.Models
+  fullName: ProductCatalog.Models
+  spec.csharp:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Models
+    name: Models
+    href: ProductCatalog.Models.html
+  spec.vb:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Models
+    name: Models
+    href: ProductCatalog.Models.html

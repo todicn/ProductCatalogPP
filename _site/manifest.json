@@ -1,0 +1,225 @@
+{
+  "source_base_path": "/workspace",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Exceptions.InsufficientQuantityException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Exceptions.InsufficientQuantityException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Exceptions.InsufficientQuantityException",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Exceptions.InsufficientQuantityException.yml\" sourcestartlinenumber=\"1\">Exception thrown when trying to purchase more items than available</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Exceptions.ProductAlreadyExistsException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Exceptions.ProductAlreadyExistsException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Exceptions.ProductAlreadyExistsException",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Exceptions.ProductAlreadyExistsException.yml\" sourcestartlinenumber=\"1\">Exception thrown when trying to add a product that already exists</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Exceptions.ProductCatalogException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Exceptions.ProductCatalogException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Exceptions.ProductCatalogException",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Exceptions.ProductCatalogException.yml\" sourcestartlinenumber=\"1\">Base exception for product catalog operations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Exceptions.ProductNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Exceptions.ProductNotFoundException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Exceptions.ProductNotFoundException",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Exceptions.ProductNotFoundException.yml\" sourcestartlinenumber=\"1\">Exception thrown when a product is not found</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Models.Product.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Models.Product.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Models.Product",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Models.Product.yml\" sourcestartlinenumber=\"1\">Represents a product in the catalog</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Services.IProductCatalogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Services.IProductCatalogService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Services.IProductCatalogService",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Services.IProductCatalogService.yml\" sourcestartlinenumber=\"1\">Interface for product catalog operations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Services.ProductCatalogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Services.ProductCatalogService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Services.ProductCatalogService",
+      "Summary": "<p sourcefile=\"docs/api/ProductCatalog.Services.ProductCatalogService.yml\" sourcestartlinenumber=\"1\">Implementation of product catalog operations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "docs/api/ProductCatalog.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/ProductCatalog.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ProductCatalog.Services",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/api/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

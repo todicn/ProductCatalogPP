@@ -1,0 +1,570 @@
+### YamlMime:ManagedReference
+items:
+- uid: ProductCatalog.Models.Product
+  commentId: T:ProductCatalog.Models.Product
+  id: Product
+  parent: ProductCatalog.Models
+  children:
+  - ProductCatalog.Models.Product.#ctor(System.String,System.Int32)
+  - ProductCatalog.Models.Product.Equals(System.Object)
+  - ProductCatalog.Models.Product.GetHashCode
+  - ProductCatalog.Models.Product.Name
+  - ProductCatalog.Models.Product.Quantity
+  - ProductCatalog.Models.Product.ToString
+  langs:
+  - csharp
+  - vb
+  name: Product
+  nameWithType: Product
+  fullName: ProductCatalog.Models.Product
+  type: Class
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: Product
+    path: ProductCatalog/Models/Product.cs
+    startLine: 5
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  summary: Represents a product in the catalog
+  example: []
+  syntax:
+    content: public class Product
+    content.vb: Public Class Product
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: ProductCatalog.Models.Product.Name
+  commentId: P:ProductCatalog.Models.Product.Name
+  id: Name
+  parent: ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: Product.Name
+  fullName: ProductCatalog.Models.Product.Name
+  type: Property
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: Name
+    path: ProductCatalog/Models/Product.cs
+    startLine: 7
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: ProductCatalog.Models.Product.Name*
+- uid: ProductCatalog.Models.Product.Quantity
+  commentId: P:ProductCatalog.Models.Product.Quantity
+  id: Quantity
+  parent: ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: Quantity
+  nameWithType: Product.Quantity
+  fullName: ProductCatalog.Models.Product.Quantity
+  type: Property
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: Quantity
+    path: ProductCatalog/Models/Product.cs
+    startLine: 8
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  syntax:
+    content: public int Quantity { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Quantity As Integer
+  overload: ProductCatalog.Models.Product.Quantity*
+- uid: ProductCatalog.Models.Product.#ctor(System.String,System.Int32)
+  commentId: M:ProductCatalog.Models.Product.#ctor(System.String,System.Int32)
+  id: '#ctor(System.String,System.Int32)'
+  parent: ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: Product(string, int)
+  nameWithType: Product.Product(string, int)
+  fullName: ProductCatalog.Models.Product.Product(string, int)
+  type: Constructor
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: .ctor
+    path: ProductCatalog/Models/Product.cs
+    startLine: 10
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  syntax:
+    content: public Product(string name, int quantity)
+    parameters:
+    - id: name
+      type: System.String
+    - id: quantity
+      type: System.Int32
+    content.vb: Public Sub New(name As String, quantity As Integer)
+  overload: ProductCatalog.Models.Product.#ctor*
+  nameWithType.vb: Product.New(String, Integer)
+  fullName.vb: ProductCatalog.Models.Product.New(String, Integer)
+  name.vb: New(String, Integer)
+- uid: ProductCatalog.Models.Product.ToString
+  commentId: M:ProductCatalog.Models.Product.ToString
+  id: ToString
+  parent: ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Product.ToString()
+  fullName: ProductCatalog.Models.Product.ToString()
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: ToString
+    path: ProductCatalog/Models/Product.cs
+    startLine: 22
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: ProductCatalog.Models.Product.ToString*
+- uid: ProductCatalog.Models.Product.Equals(System.Object)
+  commentId: M:ProductCatalog.Models.Product.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: Product.Equals(object?)
+  fullName: ProductCatalog.Models.Product.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: Equals
+    path: ProductCatalog/Models/Product.cs
+    startLine: 27
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  summary: Determines whether the specified object is equal to the current object.
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: ProductCatalog.Models.Product.Equals*
+  nameWithType.vb: Product.Equals(Object)
+  fullName.vb: ProductCatalog.Models.Product.Equals(Object)
+  name.vb: Equals(Object)
+- uid: ProductCatalog.Models.Product.GetHashCode
+  commentId: M:ProductCatalog.Models.Product.GetHashCode
+  id: GetHashCode
+  parent: ProductCatalog.Models.Product
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Product.GetHashCode()
+  fullName: ProductCatalog.Models.Product.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Models/Product.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: GetHashCode
+    path: ProductCatalog/Models/Product.cs
+    startLine: 36
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Models
+  summary: Serves as the default hash function.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current object.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.Object.GetHashCode
+  overload: ProductCatalog.Models.Product.GetHashCode*
+references:
+- uid: ProductCatalog.Models
+  commentId: N:ProductCatalog.Models
+  href: ProductCatalog.html
+  name: ProductCatalog.Models
+  nameWithType: ProductCatalog.Models
+  fullName: ProductCatalog.Models
+  spec.csharp:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Models
+    name: Models
+    href: ProductCatalog.Models.html
+  spec.vb:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Models
+    name: Models
+    href: ProductCatalog.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: ProductCatalog.Models.Product.Name*
+  commentId: Overload:ProductCatalog.Models.Product.Name
+  href: ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Name
+  name: Name
+  nameWithType: Product.Name
+  fullName: ProductCatalog.Models.Product.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: ProductCatalog.Models.Product.Quantity*
+  commentId: Overload:ProductCatalog.Models.Product.Quantity
+  href: ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Quantity
+  name: Quantity
+  nameWithType: Product.Quantity
+  fullName: ProductCatalog.Models.Product.Quantity
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: ProductCatalog.Models.Product.#ctor*
+  commentId: Overload:ProductCatalog.Models.Product.#ctor
+  href: ProductCatalog.Models.Product.html#ProductCatalog_Models_Product__ctor_System_String_System_Int32_
+  name: Product
+  nameWithType: Product.Product
+  fullName: ProductCatalog.Models.Product.Product
+  nameWithType.vb: Product.New
+  fullName.vb: ProductCatalog.Models.Product.New
+  name.vb: New
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: ProductCatalog.Models.Product.ToString*
+  commentId: Overload:ProductCatalog.Models.Product.ToString
+  href: ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_ToString
+  name: ToString
+  nameWithType: Product.ToString
+  fullName: ProductCatalog.Models.Product.ToString
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: ProductCatalog.Models.Product.Equals*
+  commentId: Overload:ProductCatalog.Models.Product.Equals
+  href: ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Equals_System_Object_
+  name: Equals
+  nameWithType: Product.Equals
+  fullName: ProductCatalog.Models.Product.Equals
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: ProductCatalog.Models.Product.GetHashCode*
+  commentId: Overload:ProductCatalog.Models.Product.GetHashCode
+  href: ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_GetHashCode
+  name: GetHashCode
+  nameWithType: Product.GetHashCode
+  fullName: ProductCatalog.Models.Product.GetHashCode

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Product Catalog Application | ProductCatalog Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Product Catalog Application | ProductCatalog Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/todicn/ProductCatalogPP/blob/cursor/enable-xml-documentation-and-dotfx-site-1824/README.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="ProductCatalog">
+            ProductCatalog
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="product-catalog-application">Product Catalog Application</h1>
+
+<p>A C# console application that manages a product catalog with comprehensive error handling and unit tests.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Add Product</strong>: Add new products with name and initial quantity</li>
+<li><strong>Remove Product</strong>: Remove products from the catalog</li>
+<li><strong>Purchase Product</strong>: Decrease product quantity when purchased</li>
+<li><strong>List Products</strong>: Display all products sorted by quantity (descending order)</li>
+<li><strong>Error Handling</strong>: Robust error handling with custom exceptions</li>
+<li><strong>Unit Tests</strong>: Comprehensive test coverage using xUnit</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<pre><code>ProductCatalogPP1/
+├── ProductCatalog/                    # Main application
+│   ├── Models/
+│   │   └── Product.cs                 # Product model class
+│   ├── Services/
+│   │   ├── IProductCatalogService.cs  # Service interface
+│   │   └── ProductCatalogService.cs   # Service implementation
+│   ├── Exceptions/
+│   │   └── ProductCatalogException.cs # Custom exceptions
+│   ├── Program.cs                     # Main entry point
+│   └── ProductCatalog.csproj         # Project file
+├── ProductCatalog.Tests/              # Unit tests
+│   ├── Models/
+│   │   └── ProductTests.cs           # Product model tests
+│   ├── Services/
+│   │   └── ProductCatalogServiceTests.cs # Service tests
+│   ├── Exceptions/
+│   │   └── ExceptionTests.cs         # Exception tests
+│   └── ProductCatalog.Tests.csproj   # Test project file
+├── ProductCatalog.sln                 # Solution file
+└── README.md                          # This file
+</code></pre>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>.NET 8.0 SDK or later</li>
+<li>Visual Studio 2022, Visual Studio Code, or any C# compatible IDE</li>
+</ul>
+<h3 id="building-the-solution">Building the Solution</h3>
+<ol>
+<li>Clone or download the project</li>
+<li>Open a terminal/command prompt in the project root directory</li>
+<li>Build the solution:</li>
+</ol>
+<pre><code class="lang-bash">dotnet build
+</code></pre>
+<h3 id="running-the-application">Running the Application</h3>
+<p>To run the console application:</p>
+<pre><code class="lang-bash">dotnet run --project ProductCatalog
+</code></pre>
+<h3 id="running-unit-tests">Running Unit Tests</h3>
+<p>To execute all unit tests:</p>
+<pre><code class="lang-bash">dotnet test
+</code></pre>
+<p>To run tests with detailed output:</p>
+<pre><code class="lang-bash">dotnet test --verbosity normal
+</code></pre>
+<p>To generate code coverage report (if you have coverage tools installed):</p>
+<pre><code class="lang-bash">dotnet test --collect:&quot;XPlat Code Coverage&quot;
+</code></pre>
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="basic-operations">Basic Operations</h3>
+<pre><code class="lang-csharp">var catalog = new ProductCatalogService();
+
+// Add products
+catalog.AddProduct(&quot;Laptop&quot;, 10);
+catalog.AddProduct(&quot;Mouse&quot;, 25);
+catalog.AddProduct(&quot;Keyboard&quot;, 15);
+
+// Purchase products
+catalog.PurchaseProduct(&quot;Mouse&quot;, 5);  // Decreases quantity by 5
+
+// List products by quantity (descending)
+var products = catalog.ListProductsByQuantity();
+foreach (var product in products)
+{
+    Console.WriteLine(product); // Output: &quot;Mouse: 20 units&quot;
+}
+
+// Remove products
+catalog.RemoveProduct(&quot;Keyboard&quot;);
+
+// Get specific product
+var laptop = catalog.GetProduct(&quot;Laptop&quot;);
+Console.WriteLine($&quot;Laptop quantity: {laptop.Quantity}&quot;);
+</code></pre>
+<h3 id="error-handling">Error Handling</h3>
+<p>The application handles various error scenarios:</p>
+<ul>
+<li><strong>ProductNotFoundException</strong>: Thrown when trying to access a non-existent product</li>
+<li><strong>ProductAlreadyExistsException</strong>: Thrown when adding a product that already exists</li>
+<li><strong>InsufficientQuantityException</strong>: Thrown when trying to purchase more than available</li>
+<li><strong>ArgumentException</strong>: Thrown for invalid inputs (null names, negative quantities, etc.)</li>
+</ul>
+<h2 id="api-reference">API Reference</h2>
+<h3 id="iproductcatalogservice-interface">IProductCatalogService Interface</h3>
+<h4 id="methods">Methods</h4>
+<ul>
+<li><code>void AddProduct(string name, int quantity)</code>: Adds a new product</li>
+<li><code>void RemoveProduct(string name)</code>: Removes an existing product</li>
+<li><code>void PurchaseProduct(string name, int quantity)</code>: Purchases product (decreases quantity)</li>
+<li><code>IReadOnlyList&lt;Product&gt; ListProductsByQuantity()</code>: Returns products sorted by quantity (desc)</li>
+<li><code>Product GetProduct(string name)</code>: Gets a specific product by name</li>
+<li><code>int GetProductCount()</code>: Returns total number of products</li>
+</ul>
+<h3 id="product-class">Product Class</h3>
+<h4 id="properties">Properties</h4>
+<ul>
+<li><code>string Name</code>: Product name (trimmed, case-insensitive for comparisons)</li>
+<li><code>int Quantity</code>: Current quantity in stock</li>
+</ul>
+<h4 id="methods-1">Methods</h4>
+<ul>
+<li><code>ToString()</code>: Returns formatted string representation</li>
+<li><code>Equals(object obj)</code>: Case-insensitive name comparison</li>
+<li><code>GetHashCode()</code>: Case-insensitive hash code</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<p>The project includes comprehensive unit tests covering:</p>
+<ul>
+<li><strong>Model Tests</strong>: Product class validation and behavior</li>
+<li><strong>Service Tests</strong>: All CRUD operations and edge cases</li>
+<li><strong>Exception Tests</strong>: Custom exception behavior</li>
+<li><strong>Integration Tests</strong>: Complex scenarios with multiple operations</li>
+</ul>
+<h3 id="test-categories">Test Categories</h3>
+<ol>
+<li><strong>Positive Tests</strong>: Valid operations that should succeed</li>
+<li><strong>Negative Tests</strong>: Invalid operations that should throw exceptions</li>
+<li><strong>Edge Cases</strong>: Boundary conditions and special scenarios</li>
+<li><strong>Integration Tests</strong>: Real-world usage patterns</li>
+</ol>
+<h2 id="technical-details">Technical Details</h2>
+<ul>
+<li><strong>Target Framework</strong>: .NET 8.0</li>
+<li><strong>Testing Framework</strong>: xUnit</li>
+<li><strong>Architecture</strong>: Service-oriented with dependency injection support</li>
+<li><strong>Error Handling</strong>: Custom exception hierarchy</li>
+<li><strong>Thread Safety</strong>: Not thread-safe (single-threaded usage assumed)</li>
+<li><strong>Storage</strong>: In-memory dictionary (no persistence)</li>
+</ul>
+<h2 id="future-enhancements">Future Enhancements</h2>
+<p>Potential improvements that could be added:</p>
+<ul>
+<li>Persistence layer (database or file storage)</li>
+<li>Thread-safety for concurrent operations</li>
+<li>Product categories and advanced filtering</li>
+<li>Price tracking and inventory valuation</li>
+<li>REST API endpoints</li>
+<li>Audit logging for all operations</li>
+<li>Bulk operations (add/remove multiple products)</li>
+<li>Low stock alerts and inventory management</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/todicn/ProductCatalogPP/blob/cursor/enable-xml-documentation-and-dotfx-site-1824/README.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

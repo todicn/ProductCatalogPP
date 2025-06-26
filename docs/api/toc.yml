@@ -1,0 +1,36 @@
+### YamlMime:TableOfContent
+items:
+- uid: ProductCatalog.Exceptions
+  name: ProductCatalog.Exceptions
+  type: Namespace
+  items:
+  - uid: ProductCatalog.Exceptions.InsufficientQuantityException
+    name: InsufficientQuantityException
+    type: Class
+  - uid: ProductCatalog.Exceptions.ProductAlreadyExistsException
+    name: ProductAlreadyExistsException
+    type: Class
+  - uid: ProductCatalog.Exceptions.ProductCatalogException
+    name: ProductCatalogException
+    type: Class
+  - uid: ProductCatalog.Exceptions.ProductNotFoundException
+    name: ProductNotFoundException
+    type: Class
+- uid: ProductCatalog.Models
+  name: ProductCatalog.Models
+  type: Namespace
+  items:
+  - uid: ProductCatalog.Models.Product
+    name: Product
+    type: Class
+- uid: ProductCatalog.Services
+  name: ProductCatalog.Services
+  type: Namespace
+  items:
+  - uid: ProductCatalog.Services.IProductCatalogService
+    name: IProductCatalogService
+    type: Interface
+  - uid: ProductCatalog.Services.ProductCatalogService
+    name: ProductCatalogService
+    type: Class
+memberLayout: SamePage

@@ -1,0 +1,477 @@
+### YamlMime:ManagedReference
+items:
+- uid: ProductCatalog.Services.IProductCatalogService
+  commentId: T:ProductCatalog.Services.IProductCatalogService
+  id: IProductCatalogService
+  parent: ProductCatalog.Services
+  children:
+  - ProductCatalog.Services.IProductCatalogService.AddProduct(System.String,System.Int32)
+  - ProductCatalog.Services.IProductCatalogService.GetProduct(System.String)
+  - ProductCatalog.Services.IProductCatalogService.GetProductCount
+  - ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  - ProductCatalog.Services.IProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  - ProductCatalog.Services.IProductCatalogService.RemoveProduct(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IProductCatalogService
+  nameWithType: IProductCatalogService
+  fullName: ProductCatalog.Services.IProductCatalogService
+  type: Interface
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: IProductCatalogService
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 7
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Interface for product catalog operations
+  example: []
+  syntax:
+    content: public interface IProductCatalogService
+    content.vb: Public Interface IProductCatalogService
+- uid: ProductCatalog.Services.IProductCatalogService.AddProduct(System.String,System.Int32)
+  commentId: M:ProductCatalog.Services.IProductCatalogService.AddProduct(System.String,System.Int32)
+  id: AddProduct(System.String,System.Int32)
+  parent: ProductCatalog.Services.IProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: AddProduct(string, int)
+  nameWithType: IProductCatalogService.AddProduct(string, int)
+  fullName: ProductCatalog.Services.IProductCatalogService.AddProduct(string, int)
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: AddProduct
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 16
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Adds a new product to the catalog
+  example: []
+  syntax:
+    content: void AddProduct(string name, int quantity)
+    parameters:
+    - id: name
+      type: System.String
+      description: Product name
+    - id: quantity
+      type: System.Int32
+      description: Initial quantity
+    content.vb: Sub AddProduct(name As String, quantity As Integer)
+  overload: ProductCatalog.Services.IProductCatalogService.AddProduct*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when name is invalid or quantity is negative
+  nameWithType.vb: IProductCatalogService.AddProduct(String, Integer)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.AddProduct(String, Integer)
+  name.vb: AddProduct(String, Integer)
+- uid: ProductCatalog.Services.IProductCatalogService.RemoveProduct(System.String)
+  commentId: M:ProductCatalog.Services.IProductCatalogService.RemoveProduct(System.String)
+  id: RemoveProduct(System.String)
+  parent: ProductCatalog.Services.IProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: RemoveProduct(string)
+  nameWithType: IProductCatalogService.RemoveProduct(string)
+  fullName: ProductCatalog.Services.IProductCatalogService.RemoveProduct(string)
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: RemoveProduct
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 23
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Removes a product from the catalog
+  example: []
+  syntax:
+    content: void RemoveProduct(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: Product name to remove
+    content.vb: Sub RemoveProduct(name As String)
+  overload: ProductCatalog.Services.IProductCatalogService.RemoveProduct*
+  nameWithType.vb: IProductCatalogService.RemoveProduct(String)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.RemoveProduct(String)
+  name.vb: RemoveProduct(String)
+- uid: ProductCatalog.Services.IProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  commentId: M:ProductCatalog.Services.IProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  id: PurchaseProduct(System.String,System.Int32)
+  parent: ProductCatalog.Services.IProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: PurchaseProduct(string, int)
+  nameWithType: IProductCatalogService.PurchaseProduct(string, int)
+  fullName: ProductCatalog.Services.IProductCatalogService.PurchaseProduct(string, int)
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: PurchaseProduct
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 33
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Purchases a product (decreases quantity)
+  example: []
+  syntax:
+    content: void PurchaseProduct(string name, int quantity)
+    parameters:
+    - id: name
+      type: System.String
+      description: Product name
+    - id: quantity
+      type: System.Int32
+      description: Quantity to purchase
+    content.vb: Sub PurchaseProduct(name As String, quantity As Integer)
+  overload: ProductCatalog.Services.IProductCatalogService.PurchaseProduct*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when quantity is not positive
+  nameWithType.vb: IProductCatalogService.PurchaseProduct(String, Integer)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.PurchaseProduct(String, Integer)
+  name.vb: PurchaseProduct(String, Integer)
+- uid: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  commentId: M:ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  id: ListProductsByQuantity
+  parent: ProductCatalog.Services.IProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: ListProductsByQuantity()
+  nameWithType: IProductCatalogService.ListProductsByQuantity()
+  fullName: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity()
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: ListProductsByQuantity
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 39
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Lists all products sorted by quantity in descending order
+  example: []
+  syntax:
+    content: IReadOnlyList<Product> ListProductsByQuantity()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{ProductCatalog.Models.Product}
+      description: List of products sorted by quantity (highest first)
+    content.vb: Function ListProductsByQuantity() As IReadOnlyList(Of Product)
+  overload: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity*
+- uid: ProductCatalog.Services.IProductCatalogService.GetProduct(System.String)
+  commentId: M:ProductCatalog.Services.IProductCatalogService.GetProduct(System.String)
+  id: GetProduct(System.String)
+  parent: ProductCatalog.Services.IProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: GetProduct(string)
+  nameWithType: IProductCatalogService.GetProduct(string)
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProduct(string)
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: GetProduct
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 47
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Gets a product by name
+  example: []
+  syntax:
+    content: Product GetProduct(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: Product name
+    return:
+      type: ProductCatalog.Models.Product
+      description: The product if found
+    content.vb: Function GetProduct(name As String) As Product
+  overload: ProductCatalog.Services.IProductCatalogService.GetProduct*
+  nameWithType.vb: IProductCatalogService.GetProduct(String)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.GetProduct(String)
+  name.vb: GetProduct(String)
+- uid: ProductCatalog.Services.IProductCatalogService.GetProductCount
+  commentId: M:ProductCatalog.Services.IProductCatalogService.GetProductCount
+  id: GetProductCount
+  parent: ProductCatalog.Services.IProductCatalogService
+  langs:
+  - csharp
+  - vb
+  name: GetProductCount()
+  nameWithType: IProductCatalogService.GetProductCount()
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProductCount()
+  type: Method
+  source:
+    remote:
+      path: ProductCatalog/Services/IProductCatalogService.cs
+      branch: cursor/enable-xml-documentation-and-dotfx-site-1824
+      repo: https://github.com/todicn/ProductCatalogPP
+    id: GetProductCount
+    path: ProductCatalog/Services/IProductCatalogService.cs
+    startLine: 53
+  assemblies:
+  - ProductCatalog
+  namespace: ProductCatalog.Services
+  summary: Gets the total number of products in the catalog
+  example: []
+  syntax:
+    content: int GetProductCount()
+    return:
+      type: System.Int32
+      description: Number of unique products
+    content.vb: Function GetProductCount() As Integer
+  overload: ProductCatalog.Services.IProductCatalogService.GetProductCount*
+references:
+- uid: ProductCatalog.Services
+  commentId: N:ProductCatalog.Services
+  href: ProductCatalog.html
+  name: ProductCatalog.Services
+  nameWithType: ProductCatalog.Services
+  fullName: ProductCatalog.Services
+  spec.csharp:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Services
+    name: Services
+    href: ProductCatalog.Services.html
+  spec.vb:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Services
+    name: Services
+    href: ProductCatalog.Services.html
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: ProductCatalog.Services.IProductCatalogService.AddProduct*
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.AddProduct
+  href: ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_AddProduct_System_String_System_Int32_
+  name: AddProduct
+  nameWithType: IProductCatalogService.AddProduct
+  fullName: ProductCatalog.Services.IProductCatalogService.AddProduct
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: ProductCatalog.Services.IProductCatalogService.RemoveProduct*
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.RemoveProduct
+  href: ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_RemoveProduct_System_String_
+  name: RemoveProduct
+  nameWithType: IProductCatalogService.RemoveProduct
+  fullName: ProductCatalog.Services.IProductCatalogService.RemoveProduct
+- uid: ProductCatalog.Services.IProductCatalogService.PurchaseProduct*
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.PurchaseProduct
+  href: ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_PurchaseProduct_System_String_System_Int32_
+  name: PurchaseProduct
+  nameWithType: IProductCatalogService.PurchaseProduct
+  fullName: ProductCatalog.Services.IProductCatalogService.PurchaseProduct
+- uid: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity*
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  href: ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_ListProductsByQuantity
+  name: ListProductsByQuantity
+  nameWithType: IProductCatalogService.ListProductsByQuantity
+  fullName: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+- uid: System.Collections.Generic.IReadOnlyList{ProductCatalog.Models.Product}
+  commentId: T:System.Collections.Generic.IReadOnlyList{ProductCatalog.Models.Product}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<Product>
+  nameWithType: IReadOnlyList<Product>
+  fullName: System.Collections.Generic.IReadOnlyList<ProductCatalog.Models.Product>
+  nameWithType.vb: IReadOnlyList(Of Product)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of ProductCatalog.Models.Product)
+  name.vb: IReadOnlyList(Of Product)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: ProductCatalog.Models.Product
+    name: Product
+    href: ProductCatalog.Models.Product.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: ProductCatalog.Models.Product
+    name: Product
+    href: ProductCatalog.Models.Product.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: ProductCatalog.Services.IProductCatalogService.GetProduct*
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.GetProduct
+  href: ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_GetProduct_System_String_
+  name: GetProduct
+  nameWithType: IProductCatalogService.GetProduct
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProduct
+- uid: ProductCatalog.Models.Product
+  commentId: T:ProductCatalog.Models.Product
+  parent: ProductCatalog.Models
+  href: ProductCatalog.Models.Product.html
+  name: Product
+  nameWithType: Product
+  fullName: ProductCatalog.Models.Product
+- uid: ProductCatalog.Models
+  commentId: N:ProductCatalog.Models
+  href: ProductCatalog.html
+  name: ProductCatalog.Models
+  nameWithType: ProductCatalog.Models
+  fullName: ProductCatalog.Models
+  spec.csharp:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Models
+    name: Models
+    href: ProductCatalog.Models.html
+  spec.vb:
+  - uid: ProductCatalog
+    name: ProductCatalog
+    href: ProductCatalog.html
+  - name: .
+  - uid: ProductCatalog.Models
+    name: Models
+    href: ProductCatalog.Models.html
+- uid: ProductCatalog.Services.IProductCatalogService.GetProductCount*
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.GetProductCount
+  href: ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_GetProductCount
+  name: GetProductCount
+  nameWithType: IProductCatalogService.GetProductCount
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProductCount

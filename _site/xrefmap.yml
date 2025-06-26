@@ -1,0 +1,434 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: ProductCatalog.Exceptions
+  name: ProductCatalog.Exceptions
+  href: docs/api/ProductCatalog.Exceptions.html
+  commentId: N:ProductCatalog.Exceptions
+  fullName: ProductCatalog.Exceptions
+  nameWithType: ProductCatalog.Exceptions
+- uid: ProductCatalog.Exceptions.InsufficientQuantityException
+  name: InsufficientQuantityException
+  href: docs/api/ProductCatalog.Exceptions.InsufficientQuantityException.html
+  commentId: T:ProductCatalog.Exceptions.InsufficientQuantityException
+  fullName: ProductCatalog.Exceptions.InsufficientQuantityException
+  nameWithType: InsufficientQuantityException
+- uid: ProductCatalog.Exceptions.InsufficientQuantityException.#ctor(System.String,System.Int32,System.Int32)
+  name: InsufficientQuantityException(string, int, int)
+  href: docs/api/ProductCatalog.Exceptions.InsufficientQuantityException.html#ProductCatalog_Exceptions_InsufficientQuantityException__ctor_System_String_System_Int32_System_Int32_
+  commentId: M:ProductCatalog.Exceptions.InsufficientQuantityException.#ctor(System.String,System.Int32,System.Int32)
+  name.vb: New(String, Integer, Integer)
+  fullName: ProductCatalog.Exceptions.InsufficientQuantityException.InsufficientQuantityException(string, int, int)
+  fullName.vb: ProductCatalog.Exceptions.InsufficientQuantityException.New(String, Integer, Integer)
+  nameWithType: InsufficientQuantityException.InsufficientQuantityException(string, int, int)
+  nameWithType.vb: InsufficientQuantityException.New(String, Integer, Integer)
+- uid: ProductCatalog.Exceptions.InsufficientQuantityException.#ctor*
+  name: InsufficientQuantityException
+  href: docs/api/ProductCatalog.Exceptions.InsufficientQuantityException.html#ProductCatalog_Exceptions_InsufficientQuantityException__ctor_
+  commentId: Overload:ProductCatalog.Exceptions.InsufficientQuantityException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: ProductCatalog.Exceptions.InsufficientQuantityException.InsufficientQuantityException
+  fullName.vb: ProductCatalog.Exceptions.InsufficientQuantityException.New
+  nameWithType: InsufficientQuantityException.InsufficientQuantityException
+  nameWithType.vb: InsufficientQuantityException.New
+- uid: ProductCatalog.Exceptions.ProductAlreadyExistsException
+  name: ProductAlreadyExistsException
+  href: docs/api/ProductCatalog.Exceptions.ProductAlreadyExistsException.html
+  commentId: T:ProductCatalog.Exceptions.ProductAlreadyExistsException
+  fullName: ProductCatalog.Exceptions.ProductAlreadyExistsException
+  nameWithType: ProductAlreadyExistsException
+- uid: ProductCatalog.Exceptions.ProductAlreadyExistsException.#ctor(System.String)
+  name: ProductAlreadyExistsException(string)
+  href: docs/api/ProductCatalog.Exceptions.ProductAlreadyExistsException.html#ProductCatalog_Exceptions_ProductAlreadyExistsException__ctor_System_String_
+  commentId: M:ProductCatalog.Exceptions.ProductAlreadyExistsException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: ProductCatalog.Exceptions.ProductAlreadyExistsException.ProductAlreadyExistsException(string)
+  fullName.vb: ProductCatalog.Exceptions.ProductAlreadyExistsException.New(String)
+  nameWithType: ProductAlreadyExistsException.ProductAlreadyExistsException(string)
+  nameWithType.vb: ProductAlreadyExistsException.New(String)
+- uid: ProductCatalog.Exceptions.ProductAlreadyExistsException.#ctor*
+  name: ProductAlreadyExistsException
+  href: docs/api/ProductCatalog.Exceptions.ProductAlreadyExistsException.html#ProductCatalog_Exceptions_ProductAlreadyExistsException__ctor_
+  commentId: Overload:ProductCatalog.Exceptions.ProductAlreadyExistsException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: ProductCatalog.Exceptions.ProductAlreadyExistsException.ProductAlreadyExistsException
+  fullName.vb: ProductCatalog.Exceptions.ProductAlreadyExistsException.New
+  nameWithType: ProductAlreadyExistsException.ProductAlreadyExistsException
+  nameWithType.vb: ProductAlreadyExistsException.New
+- uid: ProductCatalog.Exceptions.ProductCatalogException
+  name: ProductCatalogException
+  href: docs/api/ProductCatalog.Exceptions.ProductCatalogException.html
+  commentId: T:ProductCatalog.Exceptions.ProductCatalogException
+  fullName: ProductCatalog.Exceptions.ProductCatalogException
+  nameWithType: ProductCatalogException
+- uid: ProductCatalog.Exceptions.ProductCatalogException.#ctor(System.String)
+  name: ProductCatalogException(string)
+  href: docs/api/ProductCatalog.Exceptions.ProductCatalogException.html#ProductCatalog_Exceptions_ProductCatalogException__ctor_System_String_
+  commentId: M:ProductCatalog.Exceptions.ProductCatalogException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: ProductCatalog.Exceptions.ProductCatalogException.ProductCatalogException(string)
+  fullName.vb: ProductCatalog.Exceptions.ProductCatalogException.New(String)
+  nameWithType: ProductCatalogException.ProductCatalogException(string)
+  nameWithType.vb: ProductCatalogException.New(String)
+- uid: ProductCatalog.Exceptions.ProductCatalogException.#ctor(System.String,System.Exception)
+  name: ProductCatalogException(string, Exception)
+  href: docs/api/ProductCatalog.Exceptions.ProductCatalogException.html#ProductCatalog_Exceptions_ProductCatalogException__ctor_System_String_System_Exception_
+  commentId: M:ProductCatalog.Exceptions.ProductCatalogException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: ProductCatalog.Exceptions.ProductCatalogException.ProductCatalogException(string, System.Exception)
+  fullName.vb: ProductCatalog.Exceptions.ProductCatalogException.New(String, System.Exception)
+  nameWithType: ProductCatalogException.ProductCatalogException(string, Exception)
+  nameWithType.vb: ProductCatalogException.New(String, Exception)
+- uid: ProductCatalog.Exceptions.ProductCatalogException.#ctor*
+  name: ProductCatalogException
+  href: docs/api/ProductCatalog.Exceptions.ProductCatalogException.html#ProductCatalog_Exceptions_ProductCatalogException__ctor_
+  commentId: Overload:ProductCatalog.Exceptions.ProductCatalogException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: ProductCatalog.Exceptions.ProductCatalogException.ProductCatalogException
+  fullName.vb: ProductCatalog.Exceptions.ProductCatalogException.New
+  nameWithType: ProductCatalogException.ProductCatalogException
+  nameWithType.vb: ProductCatalogException.New
+- uid: ProductCatalog.Exceptions.ProductNotFoundException
+  name: ProductNotFoundException
+  href: docs/api/ProductCatalog.Exceptions.ProductNotFoundException.html
+  commentId: T:ProductCatalog.Exceptions.ProductNotFoundException
+  fullName: ProductCatalog.Exceptions.ProductNotFoundException
+  nameWithType: ProductNotFoundException
+- uid: ProductCatalog.Exceptions.ProductNotFoundException.#ctor(System.String)
+  name: ProductNotFoundException(string)
+  href: docs/api/ProductCatalog.Exceptions.ProductNotFoundException.html#ProductCatalog_Exceptions_ProductNotFoundException__ctor_System_String_
+  commentId: M:ProductCatalog.Exceptions.ProductNotFoundException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: ProductCatalog.Exceptions.ProductNotFoundException.ProductNotFoundException(string)
+  fullName.vb: ProductCatalog.Exceptions.ProductNotFoundException.New(String)
+  nameWithType: ProductNotFoundException.ProductNotFoundException(string)
+  nameWithType.vb: ProductNotFoundException.New(String)
+- uid: ProductCatalog.Exceptions.ProductNotFoundException.#ctor*
+  name: ProductNotFoundException
+  href: docs/api/ProductCatalog.Exceptions.ProductNotFoundException.html#ProductCatalog_Exceptions_ProductNotFoundException__ctor_
+  commentId: Overload:ProductCatalog.Exceptions.ProductNotFoundException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: ProductCatalog.Exceptions.ProductNotFoundException.ProductNotFoundException
+  fullName.vb: ProductCatalog.Exceptions.ProductNotFoundException.New
+  nameWithType: ProductNotFoundException.ProductNotFoundException
+  nameWithType.vb: ProductNotFoundException.New
+- uid: ProductCatalog.Models
+  name: ProductCatalog.Models
+  href: docs/api/ProductCatalog.Models.html
+  commentId: N:ProductCatalog.Models
+  fullName: ProductCatalog.Models
+  nameWithType: ProductCatalog.Models
+- uid: ProductCatalog.Models.Product
+  name: Product
+  href: docs/api/ProductCatalog.Models.Product.html
+  commentId: T:ProductCatalog.Models.Product
+  fullName: ProductCatalog.Models.Product
+  nameWithType: Product
+- uid: ProductCatalog.Models.Product.#ctor(System.String,System.Int32)
+  name: Product(string, int)
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product__ctor_System_String_System_Int32_
+  commentId: M:ProductCatalog.Models.Product.#ctor(System.String,System.Int32)
+  name.vb: New(String, Integer)
+  fullName: ProductCatalog.Models.Product.Product(string, int)
+  fullName.vb: ProductCatalog.Models.Product.New(String, Integer)
+  nameWithType: Product.Product(string, int)
+  nameWithType.vb: Product.New(String, Integer)
+- uid: ProductCatalog.Models.Product.#ctor*
+  name: Product
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product__ctor_
+  commentId: Overload:ProductCatalog.Models.Product.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: ProductCatalog.Models.Product.Product
+  fullName.vb: ProductCatalog.Models.Product.New
+  nameWithType: Product.Product
+  nameWithType.vb: Product.New
+- uid: ProductCatalog.Models.Product.Equals(System.Object)
+  name: Equals(object?)
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Equals_System_Object_
+  commentId: M:ProductCatalog.Models.Product.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: ProductCatalog.Models.Product.Equals(object?)
+  fullName.vb: ProductCatalog.Models.Product.Equals(Object)
+  nameWithType: Product.Equals(object?)
+  nameWithType.vb: Product.Equals(Object)
+- uid: ProductCatalog.Models.Product.Equals*
+  name: Equals
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Equals_
+  commentId: Overload:ProductCatalog.Models.Product.Equals
+  isSpec: "True"
+  fullName: ProductCatalog.Models.Product.Equals
+  nameWithType: Product.Equals
+- uid: ProductCatalog.Models.Product.GetHashCode
+  name: GetHashCode()
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_GetHashCode
+  commentId: M:ProductCatalog.Models.Product.GetHashCode
+  fullName: ProductCatalog.Models.Product.GetHashCode()
+  nameWithType: Product.GetHashCode()
+- uid: ProductCatalog.Models.Product.GetHashCode*
+  name: GetHashCode
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_GetHashCode_
+  commentId: Overload:ProductCatalog.Models.Product.GetHashCode
+  isSpec: "True"
+  fullName: ProductCatalog.Models.Product.GetHashCode
+  nameWithType: Product.GetHashCode
+- uid: ProductCatalog.Models.Product.Name
+  name: Name
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Name
+  commentId: P:ProductCatalog.Models.Product.Name
+  fullName: ProductCatalog.Models.Product.Name
+  nameWithType: Product.Name
+- uid: ProductCatalog.Models.Product.Name*
+  name: Name
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Name_
+  commentId: Overload:ProductCatalog.Models.Product.Name
+  isSpec: "True"
+  fullName: ProductCatalog.Models.Product.Name
+  nameWithType: Product.Name
+- uid: ProductCatalog.Models.Product.Quantity
+  name: Quantity
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Quantity
+  commentId: P:ProductCatalog.Models.Product.Quantity
+  fullName: ProductCatalog.Models.Product.Quantity
+  nameWithType: Product.Quantity
+- uid: ProductCatalog.Models.Product.Quantity*
+  name: Quantity
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_Quantity_
+  commentId: Overload:ProductCatalog.Models.Product.Quantity
+  isSpec: "True"
+  fullName: ProductCatalog.Models.Product.Quantity
+  nameWithType: Product.Quantity
+- uid: ProductCatalog.Models.Product.ToString
+  name: ToString()
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_ToString
+  commentId: M:ProductCatalog.Models.Product.ToString
+  fullName: ProductCatalog.Models.Product.ToString()
+  nameWithType: Product.ToString()
+- uid: ProductCatalog.Models.Product.ToString*
+  name: ToString
+  href: docs/api/ProductCatalog.Models.Product.html#ProductCatalog_Models_Product_ToString_
+  commentId: Overload:ProductCatalog.Models.Product.ToString
+  isSpec: "True"
+  fullName: ProductCatalog.Models.Product.ToString
+  nameWithType: Product.ToString
+- uid: ProductCatalog.Services
+  name: ProductCatalog.Services
+  href: docs/api/ProductCatalog.Services.html
+  commentId: N:ProductCatalog.Services
+  fullName: ProductCatalog.Services
+  nameWithType: ProductCatalog.Services
+- uid: ProductCatalog.Services.IProductCatalogService
+  name: IProductCatalogService
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html
+  commentId: T:ProductCatalog.Services.IProductCatalogService
+  fullName: ProductCatalog.Services.IProductCatalogService
+  nameWithType: IProductCatalogService
+- uid: ProductCatalog.Services.IProductCatalogService.AddProduct(System.String,System.Int32)
+  name: AddProduct(string, int)
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_AddProduct_System_String_System_Int32_
+  commentId: M:ProductCatalog.Services.IProductCatalogService.AddProduct(System.String,System.Int32)
+  name.vb: AddProduct(String, Integer)
+  fullName: ProductCatalog.Services.IProductCatalogService.AddProduct(string, int)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.AddProduct(String, Integer)
+  nameWithType: IProductCatalogService.AddProduct(string, int)
+  nameWithType.vb: IProductCatalogService.AddProduct(String, Integer)
+- uid: ProductCatalog.Services.IProductCatalogService.AddProduct*
+  name: AddProduct
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_AddProduct_
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.AddProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.IProductCatalogService.AddProduct
+  nameWithType: IProductCatalogService.AddProduct
+- uid: ProductCatalog.Services.IProductCatalogService.GetProduct(System.String)
+  name: GetProduct(string)
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_GetProduct_System_String_
+  commentId: M:ProductCatalog.Services.IProductCatalogService.GetProduct(System.String)
+  name.vb: GetProduct(String)
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProduct(string)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.GetProduct(String)
+  nameWithType: IProductCatalogService.GetProduct(string)
+  nameWithType.vb: IProductCatalogService.GetProduct(String)
+- uid: ProductCatalog.Services.IProductCatalogService.GetProduct*
+  name: GetProduct
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_GetProduct_
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.GetProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProduct
+  nameWithType: IProductCatalogService.GetProduct
+- uid: ProductCatalog.Services.IProductCatalogService.GetProductCount
+  name: GetProductCount()
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_GetProductCount
+  commentId: M:ProductCatalog.Services.IProductCatalogService.GetProductCount
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProductCount()
+  nameWithType: IProductCatalogService.GetProductCount()
+- uid: ProductCatalog.Services.IProductCatalogService.GetProductCount*
+  name: GetProductCount
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_GetProductCount_
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.GetProductCount
+  isSpec: "True"
+  fullName: ProductCatalog.Services.IProductCatalogService.GetProductCount
+  nameWithType: IProductCatalogService.GetProductCount
+- uid: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  name: ListProductsByQuantity()
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_ListProductsByQuantity
+  commentId: M:ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  fullName: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity()
+  nameWithType: IProductCatalogService.ListProductsByQuantity()
+- uid: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity*
+  name: ListProductsByQuantity
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_ListProductsByQuantity_
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  isSpec: "True"
+  fullName: ProductCatalog.Services.IProductCatalogService.ListProductsByQuantity
+  nameWithType: IProductCatalogService.ListProductsByQuantity
+- uid: ProductCatalog.Services.IProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  name: PurchaseProduct(string, int)
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_PurchaseProduct_System_String_System_Int32_
+  commentId: M:ProductCatalog.Services.IProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  name.vb: PurchaseProduct(String, Integer)
+  fullName: ProductCatalog.Services.IProductCatalogService.PurchaseProduct(string, int)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.PurchaseProduct(String, Integer)
+  nameWithType: IProductCatalogService.PurchaseProduct(string, int)
+  nameWithType.vb: IProductCatalogService.PurchaseProduct(String, Integer)
+- uid: ProductCatalog.Services.IProductCatalogService.PurchaseProduct*
+  name: PurchaseProduct
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_PurchaseProduct_
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.PurchaseProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.IProductCatalogService.PurchaseProduct
+  nameWithType: IProductCatalogService.PurchaseProduct
+- uid: ProductCatalog.Services.IProductCatalogService.RemoveProduct(System.String)
+  name: RemoveProduct(string)
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_RemoveProduct_System_String_
+  commentId: M:ProductCatalog.Services.IProductCatalogService.RemoveProduct(System.String)
+  name.vb: RemoveProduct(String)
+  fullName: ProductCatalog.Services.IProductCatalogService.RemoveProduct(string)
+  fullName.vb: ProductCatalog.Services.IProductCatalogService.RemoveProduct(String)
+  nameWithType: IProductCatalogService.RemoveProduct(string)
+  nameWithType.vb: IProductCatalogService.RemoveProduct(String)
+- uid: ProductCatalog.Services.IProductCatalogService.RemoveProduct*
+  name: RemoveProduct
+  href: docs/api/ProductCatalog.Services.IProductCatalogService.html#ProductCatalog_Services_IProductCatalogService_RemoveProduct_
+  commentId: Overload:ProductCatalog.Services.IProductCatalogService.RemoveProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.IProductCatalogService.RemoveProduct
+  nameWithType: IProductCatalogService.RemoveProduct
+- uid: ProductCatalog.Services.ProductCatalogService
+  name: ProductCatalogService
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html
+  commentId: T:ProductCatalog.Services.ProductCatalogService
+  fullName: ProductCatalog.Services.ProductCatalogService
+  nameWithType: ProductCatalogService
+- uid: ProductCatalog.Services.ProductCatalogService.#ctor
+  name: ProductCatalogService()
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService__ctor
+  commentId: M:ProductCatalog.Services.ProductCatalogService.#ctor
+  name.vb: New()
+  fullName: ProductCatalog.Services.ProductCatalogService.ProductCatalogService()
+  fullName.vb: ProductCatalog.Services.ProductCatalogService.New()
+  nameWithType: ProductCatalogService.ProductCatalogService()
+  nameWithType.vb: ProductCatalogService.New()
+- uid: ProductCatalog.Services.ProductCatalogService.#ctor*
+  name: ProductCatalogService
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService__ctor_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: ProductCatalog.Services.ProductCatalogService.ProductCatalogService
+  fullName.vb: ProductCatalog.Services.ProductCatalogService.New
+  nameWithType: ProductCatalogService.ProductCatalogService
+  nameWithType.vb: ProductCatalogService.New
+- uid: ProductCatalog.Services.ProductCatalogService.AddProduct(System.String,System.Int32)
+  name: AddProduct(string, int)
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_AddProduct_System_String_System_Int32_
+  commentId: M:ProductCatalog.Services.ProductCatalogService.AddProduct(System.String,System.Int32)
+  name.vb: AddProduct(String, Integer)
+  fullName: ProductCatalog.Services.ProductCatalogService.AddProduct(string, int)
+  fullName.vb: ProductCatalog.Services.ProductCatalogService.AddProduct(String, Integer)
+  nameWithType: ProductCatalogService.AddProduct(string, int)
+  nameWithType.vb: ProductCatalogService.AddProduct(String, Integer)
+- uid: ProductCatalog.Services.ProductCatalogService.AddProduct*
+  name: AddProduct
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_AddProduct_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.AddProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.ProductCatalogService.AddProduct
+  nameWithType: ProductCatalogService.AddProduct
+- uid: ProductCatalog.Services.ProductCatalogService.GetProduct(System.String)
+  name: GetProduct(string)
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_GetProduct_System_String_
+  commentId: M:ProductCatalog.Services.ProductCatalogService.GetProduct(System.String)
+  name.vb: GetProduct(String)
+  fullName: ProductCatalog.Services.ProductCatalogService.GetProduct(string)
+  fullName.vb: ProductCatalog.Services.ProductCatalogService.GetProduct(String)
+  nameWithType: ProductCatalogService.GetProduct(string)
+  nameWithType.vb: ProductCatalogService.GetProduct(String)
+- uid: ProductCatalog.Services.ProductCatalogService.GetProduct*
+  name: GetProduct
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_GetProduct_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.GetProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.ProductCatalogService.GetProduct
+  nameWithType: ProductCatalogService.GetProduct
+- uid: ProductCatalog.Services.ProductCatalogService.GetProductCount
+  name: GetProductCount()
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_GetProductCount
+  commentId: M:ProductCatalog.Services.ProductCatalogService.GetProductCount
+  fullName: ProductCatalog.Services.ProductCatalogService.GetProductCount()
+  nameWithType: ProductCatalogService.GetProductCount()
+- uid: ProductCatalog.Services.ProductCatalogService.GetProductCount*
+  name: GetProductCount
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_GetProductCount_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.GetProductCount
+  isSpec: "True"
+  fullName: ProductCatalog.Services.ProductCatalogService.GetProductCount
+  nameWithType: ProductCatalogService.GetProductCount
+- uid: ProductCatalog.Services.ProductCatalogService.ListProductsByQuantity
+  name: ListProductsByQuantity()
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_ListProductsByQuantity
+  commentId: M:ProductCatalog.Services.ProductCatalogService.ListProductsByQuantity
+  fullName: ProductCatalog.Services.ProductCatalogService.ListProductsByQuantity()
+  nameWithType: ProductCatalogService.ListProductsByQuantity()
+- uid: ProductCatalog.Services.ProductCatalogService.ListProductsByQuantity*
+  name: ListProductsByQuantity
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_ListProductsByQuantity_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.ListProductsByQuantity
+  isSpec: "True"
+  fullName: ProductCatalog.Services.ProductCatalogService.ListProductsByQuantity
+  nameWithType: ProductCatalogService.ListProductsByQuantity
+- uid: ProductCatalog.Services.ProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  name: PurchaseProduct(string, int)
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_PurchaseProduct_System_String_System_Int32_
+  commentId: M:ProductCatalog.Services.ProductCatalogService.PurchaseProduct(System.String,System.Int32)
+  name.vb: PurchaseProduct(String, Integer)
+  fullName: ProductCatalog.Services.ProductCatalogService.PurchaseProduct(string, int)
+  fullName.vb: ProductCatalog.Services.ProductCatalogService.PurchaseProduct(String, Integer)
+  nameWithType: ProductCatalogService.PurchaseProduct(string, int)
+  nameWithType.vb: ProductCatalogService.PurchaseProduct(String, Integer)
+- uid: ProductCatalog.Services.ProductCatalogService.PurchaseProduct*
+  name: PurchaseProduct
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_PurchaseProduct_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.PurchaseProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.ProductCatalogService.PurchaseProduct
+  nameWithType: ProductCatalogService.PurchaseProduct
+- uid: ProductCatalog.Services.ProductCatalogService.RemoveProduct(System.String)
+  name: RemoveProduct(string)
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_RemoveProduct_System_String_
+  commentId: M:ProductCatalog.Services.ProductCatalogService.RemoveProduct(System.String)
+  name.vb: RemoveProduct(String)
+  fullName: ProductCatalog.Services.ProductCatalogService.RemoveProduct(string)
+  fullName.vb: ProductCatalog.Services.ProductCatalogService.RemoveProduct(String)
+  nameWithType: ProductCatalogService.RemoveProduct(string)
+  nameWithType.vb: ProductCatalogService.RemoveProduct(String)
+- uid: ProductCatalog.Services.ProductCatalogService.RemoveProduct*
+  name: RemoveProduct
+  href: docs/api/ProductCatalog.Services.ProductCatalogService.html#ProductCatalog_Services_ProductCatalogService_RemoveProduct_
+  commentId: Overload:ProductCatalog.Services.ProductCatalogService.RemoveProduct
+  isSpec: "True"
+  fullName: ProductCatalog.Services.ProductCatalogService.RemoveProduct
+  nameWithType: ProductCatalogService.RemoveProduct
