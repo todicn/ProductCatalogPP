@@ -1,5 +1,6 @@
 using ProductCatalog.Exceptions;
 using ProductCatalog.Services;
+using ProductCatalog.Logging;
 
 namespace ProductCatalog;
 
@@ -7,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("=== Product Catalog Demo with Factory Pattern ===\n");
+        Console.WriteLine("=== Product Catalog Demo with Factory Pattern & Logging ===\n");
 
         // Demonstrate the factory pattern with different storage types
         DemonstrateStorageTypes();
@@ -37,7 +38,24 @@ class Program
             var factory = new ProductCatalogServiceFactory(config);
             var catalog = factory.CreateService();
 
-            RunProductCatalogDemo(catalog);
+            // Setup observers for logging and diagnostics (if catalog supports it)
+            IDisposable? fileLogger = null;
+            DiagnosticsCollector? diagnosticsCollector = null;
+            
+            if (catalog is ProductCatalogService observableService)
+            {
+                var consoleLogger = new ConsoleLogger(useColors: true);
+                fileLogger = new FileLogger(); // Will use default path
+                diagnosticsCollector = new DiagnosticsCollector();
+                
+                observableService.AddObserver(consoleLogger);
+                observableService.AddObserver((IProductCatalogObserver)fileLogger);
+                observableService.AddObserver(diagnosticsCollector);
+                
+                Console.WriteLine("Logging and diagnostics observers configured.\n");
+            }
+
+            RunProductCatalogDemo(catalog, fileLogger, diagnosticsCollector);
         }
         catch (Exception ex)
         {
@@ -47,11 +65,11 @@ class Program
             // Fallback to in-memory
             var fallbackFactory = new ProductCatalogServiceFactory(StorageConfigurationHelper.CreateInMemoryConfiguration());
             var fallbackCatalog = fallbackFactory.CreateService();
-            RunProductCatalogDemo(fallbackCatalog);
+            RunProductCatalogDemo(fallbackCatalog, null, null);
         }
     }
 
-    static void RunProductCatalogDemo(IProductCatalogService catalog)
+    static void RunProductCatalogDemo(IProductCatalogService catalog, IDisposable? fileLogger = null, DiagnosticsCollector? diagnosticsCollector = null)
     {
         try
         {
@@ -203,7 +221,22 @@ class Program
             Console.WriteLine($"Unexpected error: {ex.Message}");
         }
 
+        // Display diagnostics report if available
+        if (diagnosticsCollector != null)
+        {
+            Console.WriteLine("\n" + new string('=', 60));
+            Console.WriteLine(diagnosticsCollector.GetSummary());
+            Console.WriteLine(new string('=', 60));
+        }
+
+        // Cleanup
+        fileLogger?.Dispose();
+        
         Console.WriteLine("\nDemo completed successfully!");
+        if (diagnosticsCollector != null)
+        {
+            Console.WriteLine("Check the log files for detailed operation history.");
+        }
         Console.WriteLine("\nPress any key to exit...");
         Console.ReadKey();
     }

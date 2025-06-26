@@ -1,6 +1,7 @@
 using Microsoft.Azure.Cosmos;
 using ProductCatalog.Exceptions;
 using ProductCatalog.Models;
+using ProductCatalog.Logging;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -359,6 +360,26 @@ public class CosmosDbProductCatalogService : IProductCatalogService
             Console.WriteLine($"Failed to get tags from Cosmos DB: {ex.Message}");
             throw new InvalidOperationException($"Failed to get tags: {ex.Message}", ex);
         }
+    }
+
+    /// <summary>
+    /// Observer pattern support - Not implemented for external storage backends
+    /// </summary>
+    public void AddObserver(IProductCatalogObserver observer)
+    {
+        // Note: Observer pattern is not implemented for Cosmos DB backend
+        // Logging and diagnostics should be handled at the application level
+        Console.WriteLine("Warning: Observer pattern not supported in Cosmos DB implementation");
+    }
+
+    /// <summary>
+    /// Observer pattern support - Not implemented for external storage backends
+    /// </summary>
+    public void RemoveObserver(IProductCatalogObserver observer)
+    {
+        // Note: Observer pattern is not implemented for Cosmos DB backend
+        // Logging and diagnostics should be handled at the application level
+        Console.WriteLine("Warning: Observer pattern not supported in Cosmos DB implementation");
     }
 }
 

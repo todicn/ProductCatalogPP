@@ -1,5 +1,6 @@
 using ProductCatalog.Exceptions;
 using ProductCatalog.Models;
+using ProductCatalog.Logging;
 using StackExchange.Redis;
 using System.Text.Json;
 
@@ -382,6 +383,26 @@ public class RedisProductCatalogService : IProductCatalogService
             }
         }
         return false;
+    }
+
+    /// <summary>
+    /// Observer pattern support - Not implemented for external storage backends
+    /// </summary>
+    public void AddObserver(IProductCatalogObserver observer)
+    {
+        // Note: Observer pattern is not implemented for Redis backend
+        // Logging and diagnostics should be handled at the application level
+        Console.WriteLine("Warning: Observer pattern not supported in Redis implementation");
+    }
+
+    /// <summary>
+    /// Observer pattern support - Not implemented for external storage backends
+    /// </summary>
+    public void RemoveObserver(IProductCatalogObserver observer)
+    {
+        // Note: Observer pattern is not implemented for Redis backend
+        // Logging and diagnostics should be handled at the application level
+        Console.WriteLine("Warning: Observer pattern not supported in Redis implementation");
     }
 }
 
